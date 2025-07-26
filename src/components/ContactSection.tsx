@@ -43,22 +43,22 @@ const ContactSection = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "contact@datascientist.com",
-      href: "mailto:contact@datascientist.com",
+      value: "aitsidihoum@gmail.com",
+      href: "mailto:aitsidihoum@gmail.com",
       color: "text-blue-600"
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
-      value: "/in/alexandre-dupont-ds",
-      href: "https://linkedin.com/in/alexandre-dupont-ds",
+      value: "/in/mohamed-ash/",
+      href: "https://www.linkedin.com/in/mohamed-ash/",
       color: "text-blue-700"
     },
     {
       icon: Github,
       label: "GitHub",
-      value: "@alexandre-dupont",
-      href: "https://github.com/alexandre-dupont",
+      value: "@mohamedASH404",
+      href: "https://github.com/mohamedASH404",
       color: "text-gray-700"
     }
   ];

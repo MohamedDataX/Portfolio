@@ -31,10 +31,10 @@ const HeroSection = () => {
           {/* Name & Title */}
           <div className="mb-8 animate-slide-in-right">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4">
-              Alexandre Dupont
+              Mohamed Ait Sidi Hou
             </h1>
             <p className="text-xl sm:text-2xl lg:text-3xl text-white/90 font-light mb-2">
-              Data Scientist spécialisé en IA
+              Data Scientist
             </p>
             <p className="text-lg text-white/80 max-w-2xl mx-auto">
               Transforming data into actionable insights through Machine Learning and Deep Learning
