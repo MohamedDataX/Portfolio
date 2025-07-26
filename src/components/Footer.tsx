@@ -22,21 +22,10 @@ const Footer = () => {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          {/* Section principale avec animation */}
           <div className="mb-6 transform hover:scale-105 transition-all duration-300">
             <p className="flex items-center justify-center space-x-3 text-lg font-medium">
               <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                 © {currentYear} Mohamed Ait Sidi Hou
-              </span>
-              <span className="text-slate-400 animate-pulse">•</span>
-              <span className="flex items-center space-x-2 group">
-                <span className="text-slate-200">Fait avec</span>
-                <Heart className="h-5 w-5 text-red-400 fill-current animate-pulse group-hover:scale-125 transition-transform duration-300" />
-                <span className="text-slate-200">et beaucoup de</span>
-                <Sparkles className="h-4 w-4 text-yellow-400 animate-spin-slow" />
-                <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent font-semibold">
-                  données
-                </span>
               </span>
             </p>
           </div>
@@ -74,7 +63,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes spin-slow {
           from {
             transform: rotate(0deg);
