@@ -15,6 +15,7 @@ const HeroSection = () => {
         <div className="stars-layer-1"></div>
         <div className="stars-layer-2"></div>
         <div className="stars-layer-3"></div>
+        <div className="stars-layer-4"></div> {/* New fast layer */}
       </div>
       
       {/* Subtle cosmic nebula */}
@@ -121,7 +122,7 @@ const HeroSection = () => {
             radial-gradient(1px 1px at 160px 30px, rgba(255,255,255,0.9), transparent);
           background-repeat: repeat;
           background-size: 200px 100px;
-          animation: starsMove1 50s linear infinite;
+          animation: starsMove1 10s linear infinite;
         }
 
         .stars-layer-2 {
@@ -135,7 +136,7 @@ const HeroSection = () => {
             radial-gradient(1px 1px at 150px 50px, rgba(255,255,255,0.2), transparent);
           background-repeat: repeat;
           background-size: 220px 120px;
-          animation: starsMove2 80s linear infinite;
+          animation: starsMove2 40s linear infinite;
         }
 
         .stars-layer-3 {
@@ -148,7 +149,21 @@ const HeroSection = () => {
             radial-gradient(0.5px 0.5px at 125px 65px, rgba(255,255,255,0.1), transparent);
           background-repeat: repeat;
           background-size: 180px 90px;
-          animation: starsMove3 120s linear infinite;
+          animation: starsMove3 60s linear infinite;
+        }
+
+        .stars-layer-4 {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-image: 
+            radial-gradient(1px 1px at 30px 30px, rgba(255,255,255,0.5), transparent),
+            radial-gradient(1px 1px at 60px 100px, rgba(255,255,255,0.4), transparent),
+            radial-gradient(1px 1px at 120px 50px, rgba(255,255,255,0.6), transparent),
+            radial-gradient(1px 1px at 170px 90px, rgba(255,255,255,0.5), transparent);
+          background-repeat: repeat;
+          background-size: 150px 100px;
+          animation: starsMove4 20s linear infinite;
         }
 
         @keyframes starsMove1 {
@@ -172,6 +187,12 @@ const HeroSection = () => {
           40% { transform: translateY(-40px) translateX(-4px); }
           80% { transform: translateY(-70px) translateX(10px); }
           100% { transform: translateY(-90px) translateX(0); }
+        }
+
+        @keyframes starsMove4 {
+          0% { transform: translateY(0) translateX(0); }
+          50% { transform: translateY(-80px) translateX(20px); }
+          100% { transform: translateY(-150px) translateX(-10px); }
         }
 
         /* Subtle cosmic nebula */
