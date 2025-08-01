@@ -5,8 +5,8 @@ const AboutSection = () => {
   const highlights = [
     {
       icon: Target,
-      title: "Expertise Technique",
-      description: "5+ années d'expérience en Machine Learning et Deep Learning"
+      title: "Compétence Technique",
+      description: "Formation en IA & Big Data, projets concrets en Machine Learning"
     },
     {
       icon: Award,
@@ -15,8 +15,8 @@ const AboutSection = () => {
     },
     {
       icon: Users,
-      title: "Leadership",
-      description: "Encadrement d'équipes data et collaboration cross-fonctionnelle"
+      title: "Esprit d'Équipe",
+      description: "Collaboration avec des équipes pluridisciplinaires et agiles"
     }
   ];
 
