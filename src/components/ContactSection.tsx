@@ -165,7 +165,7 @@ const ContactSection = () => {
               </h3>
               <p className="text-muted-foreground leading-relaxed mb-8">
                 Je suis toujours intéressé par de nouveaux défis techniques, des collaborations 
-                innovantes ou simplement discuter de Data Science et d'IA. N'hésitez pas à me 
+                innovantes ou simplement discuter de Data / IA. N'hésitez pas à me 
                 contacter par l'un des moyens ci-dessous.
               </p>
             </div>
