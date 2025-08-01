@@ -102,7 +102,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;300;400;500&display=swap');
         
         .font-mono {
