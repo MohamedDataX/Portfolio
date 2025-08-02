@@ -34,11 +34,17 @@ const HeroSection = () => {
           <div className="w-16 h-16 rounded-full bg-gradient-to-br from-zinc-700 to-zinc-900 opacity-80 hover:opacity-100 transition-opacity duration-500 border border-zinc-600"></div>
         </div>
 
+        {/* Nom */}
+          <div className="text-2xl font-light text-white mt-16 mb-8">
+            Mohamed Ait Sidi Hou
+            <br />
+            Data Scientist
+          </div>
+
         {/* Texte principal - style p5aholic */}
         <div className="space-y-8 max-w-2xl">
           <div className="text-sm text-zinc-400 font-light tracking-wider">
-            Born in 1995<br />
-            in Paris, France.
+            Based in Paris, France.
           </div>
           
           <div className="text-base leading-relaxed text-zinc-300 font-light">
@@ -47,20 +53,16 @@ const HeroSection = () => {
             can be more<br />
             <span className="text-white">innovative and impactful</span>.<br />
             <br />
-            With a mission<br />
-            to present<br />
-            the possibilities<br />
-            of <span className="text-white">artificial intelligence</span>,<br />
-            I am pursuing<br />
-            new insights<br />
-            through experiments<br />
-            and research.
-          </div>
-
-          {/* Nom */}
-          <div className="text-2xl font-light text-white mt-16 mb-8">
-            Mohamed Ait Sidi Hou
-          </div>
+            Exploring the potential<br />
+  of <span className="text-white">artificial intelligence</span>.<br />
+  Believing it can unlock<br />
+  new opportunities and solutions,<br />
+  with a mission to reveal its possibilities,<br />
+  I pursue insights<br />
+  through hands-on research,<br />
+  experiments,<br />
+  and real-world applications.
+</div>
 
           {/* Navigation/Actions minimalistes */}
           <div className="space-y-4 text-sm">
