@@ -1,6 +1,8 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { MapPin, Calendar, Building, GraduationCap } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext.tsx';
+import CosmicBackground from '@/components/theme/CosmicBackground';
 
 interface WorkExperience {
   type: 'work';
@@ -26,6 +28,8 @@ interface Education {
 type ExperienceItem = WorkExperience | Education;
 
 const ExperienceSection = () => {
+  const { isDarkMode } = useTheme();
+
   const experiences: WorkExperience[] = [
     {
       type: 'work',
@@ -100,56 +104,85 @@ const ExperienceSection = () => {
     }
   ];
 
+  // Trie toutes les expériences et formations par année de fin décroissante
   const allItems: ExperienceItem[] = [...experiences, ...education].sort((a, b) => {
-    const yearA = parseInt(a.period.split(' - ')[1] === 'Présent' ? '2024' : a.period.split(' - ')[1]);
-    const yearB = parseInt(b.period.split(' - ')[1] === 'Présent' ? '2024' : b.period.split(' - ')[1]);
-    return yearB - yearA;
+    const getYear = (period: string) =>
+      parseInt(period.split(' - ')[1] === 'Présent' ? '2024' : period.split(' - ')[1]);
+
+    return getYear(b.period) - getYear(a.period);
   });
 
   return (
-    <section id="experience" className="py-20 bg-muted/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      id="experience"
+      className={`py-20 relative overflow-hidden theme-transition ${
+        isDarkMode ? 'theme-bg-dark' : 'bg-muted/30'
+      }`}
+    >
+      {/* Background cosmique visible uniquement en mode sombre */}
+      {isDarkMode && (
+        <CosmicBackground className="opacity-10" opacity={{ dark: 'opacity-15', light: 'opacity-8' }} />
+      )}
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Titre de la section */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+          <h2
+            className={`text-3xl sm:text-4xl font-bold mb-4 theme-transition ${
+              isDarkMode ? 'theme-text-primary' : 'text-foreground'
+            }`}
+          >
             Expérience & Formation
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto rounded"></div>
         </div>
 
         <div className="relative">
-          {/* Timeline Line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border"></div>
+          {/* Ligne verticale de la timeline */}
+          <div
+            className={`absolute left-8 top-0 bottom-0 w-0.5 theme-transition ${
+              isDarkMode ? 'bg-zinc-700' : 'bg-border'
+            }`}
+          ></div>
 
           <div className="space-y-8">
             {allItems.map((item, index) => (
-              <div 
+              <div
                 key={index}
                 className="relative flex items-start space-x-8 animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                {/* Timeline Dot */}
+                {/* Point de la timeline */}
                 <div className="relative flex-shrink-0">
-                  <div className={`w-4 h-4 rounded-full border-2 ${
-                    item.type === 'work' 
-                      ? 'bg-primary border-primary' 
-                      : 'bg-accent border-accent-foreground'
-                  }`}></div>
+                  <div
+                    className={`w-4 h-4 rounded-full border-2 ${
+                      item.type === 'work' ? 'bg-primary border-primary' : 'bg-accent border-accent-foreground'
+                    }`}
+                  ></div>
                 </div>
 
-                {/* Content Card */}
-                <Card className="flex-1 hover:shadow-card-hover transition-all duration-300">
+                {/* Carte de contenu pour chaque expérience ou formation */}
+                <Card
+                  className={`flex-1 hover:shadow-card-hover transition-all duration-300 theme-transition ${
+                    isDarkMode ? 'bg-zinc-900/60 border-zinc-700 backdrop-blur-sm' : ''
+                  }`}
+                >
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex items-center space-x-3">
-                        <div className={`p-2 rounded-lg ${
-                          item.type === 'work' 
-                            ? 'bg-primary/10 text-primary' 
-                            : 'bg-accent text-accent-foreground'
-                        }`}>
+                        <div
+                          className={`p-2 rounded-lg ${
+                            item.type === 'work' ? 'bg-primary/10 text-primary' : 'bg-accent text-accent-foreground'
+                          }`}
+                        >
                           {item.type === 'work' ? <Building size={20} /> : <GraduationCap size={20} />}
                         </div>
                         <div>
-                          <h3 className="text-xl font-semibold text-foreground">
+                          <h3
+                            className={`text-xl font-semibold theme-transition ${
+                              isDarkMode ? 'theme-text-primary' : 'text-foreground'
+                            }`}
+                          >
                             {item.type === 'work' ? item.role : item.degree}
                           </h3>
                           <p className="text-primary font-medium">
@@ -159,7 +192,11 @@ const ExperienceSection = () => {
                       </div>
                     </div>
 
-                    <div className="flex items-center space-x-4 text-sm text-muted-foreground mb-4">
+                    <div
+                      className={`flex items-center space-x-4 text-sm mb-4 theme-transition ${
+                        isDarkMode ? 'theme-text-muted' : 'text-muted-foreground'
+                      }`}
+                    >
                       <div className="flex items-center space-x-1">
                         <Calendar size={16} />
                         <span>{item.period}</span>
@@ -170,19 +207,29 @@ const ExperienceSection = () => {
                       </div>
                     </div>
 
-                    <p className="text-muted-foreground mb-4 leading-relaxed">
+                    <p
+                      className={`mb-4 leading-relaxed theme-transition ${
+                        isDarkMode ? 'theme-text-secondary' : 'text-muted-foreground'
+                      }`}
+                    >
                       {item.description}
                     </p>
 
                     <div className="mb-4">
-                      <h4 className="font-medium text-foreground mb-2">
+                      <h4
+                        className={`font-medium mb-2 theme-transition ${
+                          isDarkMode ? 'theme-text-primary' : 'text-foreground'
+                        }`}
+                      >
                         {item.type === 'work' ? 'Réalisations clés :' : 'Distinctions :'}
                       </h4>
                       <ul className="space-y-1">
                         {item.achievements.map((achievement, achievementIndex) => (
-                          <li 
+                          <li
                             key={achievementIndex}
-                            className="text-sm text-muted-foreground flex items-start"
+                            className={`text-sm flex items-start theme-transition ${
+                              isDarkMode ? 'theme-text-secondary' : 'text-muted-foreground'
+                            }`}
                           >
                             <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary mt-2 mr-2 flex-shrink-0"></span>
                             {achievement}
@@ -192,13 +239,9 @@ const ExperienceSection = () => {
                     </div>
 
                     {item.type === 'work' && (
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-2 mt-2">
                         {item.technologies.map((tech, techIndex) => (
-                          <Badge 
-                            key={techIndex}
-                            variant="secondary"
-                            className="text-xs"
-                          >
+                          <Badge key={techIndex} variant="secondary" className="theme-transition">
                             {tech}
                           </Badge>
                         ))}
