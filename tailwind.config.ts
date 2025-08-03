@@ -66,6 +66,7 @@ export default {
 			},
 			fontFamily: {
 				sans: ['Inter', 'system-ui', 'sans-serif'],
+				japanese: ['"IBM Plex Mono"', 'monospace'],
 			},
 			boxShadow: {
 				'card': 'var(--card-shadow)',
