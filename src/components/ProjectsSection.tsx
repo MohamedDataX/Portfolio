@@ -2,8 +2,12 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Github, ExternalLink, Brain, TrendingUp, MessageSquare, Eye } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext.tsx';
+import CosmicBackground from '@/components/theme/CosmicBackground';
 
 const ProjectsSection = () => {
+  const { isDarkMode } = useTheme();
+
   const projects = [
     {
       icon: Brain,
@@ -44,14 +48,28 @@ const ProjectsSection = () => {
   ];
 
   return (
-    <section id="projets" className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projets" className={`py-20 relative overflow-hidden theme-transition ${
+      isDarkMode ? 'theme-bg-dark' : 'bg-background'
+    }`}>
+      {/* Background cosmique pour le mode sombre */}
+      {isDarkMode && (
+        <CosmicBackground 
+          className="opacity-15" 
+          opacity={{ dark: 'opacity-15', light: 'opacity-8' }}
+        />
+      )}
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+          <h2 className={`text-3xl sm:text-4xl font-bold mb-4 theme-transition ${
+            isDarkMode ? 'theme-text-primary' : 'text-foreground'
+          }`}>
             Projets Réalisés
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto rounded"></div>
-          <p className="text-lg text-muted-foreground mt-6 max-w-2xl mx-auto">
+          <p className={`text-lg mt-6 max-w-2xl mx-auto theme-transition ${
+            isDarkMode ? 'theme-text-secondary' : 'text-muted-foreground'
+          }`}>
             Une sélection de projets qui illustrent mon expertise en Data Science et IA
           </p>
         </div>
@@ -60,7 +78,11 @@ const ProjectsSection = () => {
           {projects.map((project, index) => (
             <Card 
               key={index}
-              className="group hover:shadow-card-hover transition-all duration-300 hover:scale-105 animate-fade-in"
+              className={`group hover:shadow-card-hover transition-all duration-300 hover:scale-105 animate-fade-in theme-transition ${
+                isDarkMode 
+                  ? 'bg-zinc-900/60 border-zinc-700 backdrop-blur-sm' 
+                  : ''
+              }`}
               style={{ animationDelay: `${index * 0.2}s` }}
             >
               <CardHeader>
@@ -70,10 +92,19 @@ const ProjectsSection = () => {
                       <project.icon className="h-6 w-6 text-primary" />
                     </div>
                     <div>
-                      <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                      <CardTitle className={`text-xl group-hover:text-primary transition-colors theme-transition ${
+                        isDarkMode ? 'theme-text-primary' : ''
+                      }`}>
                         {project.title}
                       </CardTitle>
-                      <Badge variant="outline" className="mt-1">
+                      <Badge 
+                        variant="outline" 
+                        className={`mt-1 theme-transition ${
+                          isDarkMode 
+                            ? 'border-zinc-600 text-zinc-300' 
+                            : ''
+                        }`}
+                      >
                         {project.category}
                       </Badge>
                     </div>
@@ -82,7 +113,9 @@ const ProjectsSection = () => {
               </CardHeader>
               
               <CardContent>
-                <p className="text-muted-foreground mb-4 leading-relaxed">
+                <p className={`mb-4 leading-relaxed theme-transition ${
+                  isDarkMode ? 'theme-text-secondary' : 'text-muted-foreground'
+                }`}>
                   {project.description}
                 </p>
                 
@@ -91,7 +124,11 @@ const ProjectsSection = () => {
                     <Badge 
                       key={techIndex}
                       variant="secondary"
-                      className="text-xs"
+                      className={`text-xs theme-transition ${
+                        isDarkMode 
+                          ? 'bg-zinc-800/70 text-zinc-300 hover:bg-zinc-700' 
+                          : ''
+                      }`}
                     >
                       {tech}
                     </Badge>
@@ -102,7 +139,11 @@ const ProjectsSection = () => {
                   <Button 
                     variant="outline" 
                     size="sm"
-                    className="flex-1"
+                    className={`flex-1 theme-transition ${
+                      isDarkMode 
+                        ? 'border-zinc-600 text-zinc-300 hover:bg-zinc-800 hover:text-white' 
+                        : ''
+                    }`}
                     asChild
                   >
                     <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
