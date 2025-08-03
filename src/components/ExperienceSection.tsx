@@ -3,7 +3,6 @@ import { Badge } from '@/components/ui/badge';
 import { MapPin, Calendar, Building, GraduationCap } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext.tsx';
 import CosmicBackground from '@/components/theme/CosmicBackground';
-import ThemeToggle from '@/components/theme/ThemeToggle';
 
 interface WorkExperience {
   type: 'work';
@@ -105,7 +104,7 @@ const ExperienceSection = () => {
     }
   ];
 
-  // Trie par année de fin décroissante
+  // Trie toutes les expériences et formations par année de fin décroissante
   const allItems: ExperienceItem[] = [...experiences, ...education].sort((a, b) => {
     const getYear = (period: string) =>
       parseInt(period.split(' - ')[1] === 'Présent' ? '2024' : period.split(' - ')[1]);
@@ -120,12 +119,13 @@ const ExperienceSection = () => {
         isDarkMode ? 'theme-bg-dark' : 'bg-muted/30'
       }`}
     >
-      {/* Background cosmique pour le mode sombre */}
+      {/* Background cosmique visible uniquement en mode sombre */}
       {isDarkMode && (
         <CosmicBackground className="opacity-10" opacity={{ dark: 'opacity-15', light: 'opacity-8' }} />
       )}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Titre de la section */}
         <div className="text-center mb-16">
           <h2
             className={`text-3xl sm:text-4xl font-bold mb-4 theme-transition ${
@@ -138,7 +138,7 @@ const ExperienceSection = () => {
         </div>
 
         <div className="relative">
-          {/* Timeline Line */}
+          {/* Ligne verticale de la timeline */}
           <div
             className={`absolute left-8 top-0 bottom-0 w-0.5 theme-transition ${
               isDarkMode ? 'bg-zinc-700' : 'bg-border'
@@ -152,7 +152,7 @@ const ExperienceSection = () => {
                 className="relative flex items-start space-x-8 animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                {/* Timeline Dot */}
+                {/* Point de la timeline */}
                 <div className="relative flex-shrink-0">
                   <div
                     className={`w-4 h-4 rounded-full border-2 ${
@@ -161,7 +161,7 @@ const ExperienceSection = () => {
                   ></div>
                 </div>
 
-                {/* Content Card */}
+                {/* Carte de contenu pour chaque expérience ou formation */}
                 <Card
                   className={`flex-1 hover:shadow-card-hover transition-all duration-300 theme-transition ${
                     isDarkMode ? 'bg-zinc-900/60 border-zinc-700 backdrop-blur-sm' : ''
