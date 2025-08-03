@@ -1,46 +1,48 @@
-import { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Mail, Linkedin, Github, Send } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
-import { useTheme } from '../context/ThemeContext.tsx';
-import CosmicBackground from '@/components/theme/CosmicBackground';
+import { useState } from 'react'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import { Mail, Linkedin, Github, Send } from 'lucide-react'
+import { useToast } from '@/hooks/use-toast'
+import { useTheme } from '../context/ThemeContext.tsx'
+import CosmicBackground from '@/components/theme/CosmicBackground'
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
-  const { isDarkMode } = useTheme();
+  })
+
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const { toast } = useToast()
+  const { isDarkMode } = useTheme()
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
+
     setFormData(prev => ({
       ...prev,
       [name]: value
-    }));
-  };
+    }))
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+    e.preventDefault()
+    setIsSubmitting(true)
 
     // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise(resolve => setTimeout(resolve, 1000))
 
     toast({
       title: "Message envoyé !",
-      description: "Merci pour votre message. Je vous répondrai dans les plus brefs délais.",
-    });
+      description: "Merci pour votre message. Je vous répondrai dans les plus brefs délais."
+    })
 
-    setFormData({ name: '', email: '', message: '' });
-    setIsSubmitting(false);
-  };
+    setFormData({ name: '', email: '', message: '' })
+    setIsSubmitting(false)
+  }
 
   const contactInfo = [
     {
@@ -64,17 +66,21 @@ const ContactSection = () => {
       href: "https://github.com/mohamedASH404",
       color: "text-gray-700"
     }
-  ];
+  ]
 
   return (
     <section
       id="contact"
       className={`py-20 relative overflow-hidden theme-transition ${
         isDarkMode ? 'theme-bg-dark' : 'bg-background'
-      }`}
+      } font-mono font-light tracking-wider leading-relaxed`}
     >
-      {/* Background cosmique pour le mode sombre */}
-      {isDarkMode && <CosmicBackground className="opacity-10" opacity={{ dark: 'opacity-15', light: 'opacity-8' }} />}
+      {isDarkMode && (
+        <CosmicBackground
+          className="opacity-10"
+          opacity={{ dark: 'opacity-15', light: 'opacity-8' }}
+        />
+      )}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
@@ -240,9 +246,13 @@ const ContactSection = () => {
                       </div>
                       <div>
                         <p className="font-medium">{contact.label}</p>
-                        <p className={`text-sm theme-transition ${
-                          isDarkMode ? 'theme-text-muted' : 'text-muted-foreground'
-                        }`}>{contact.value}</p>
+                        <p
+                          className={`text-sm theme-transition ${
+                            isDarkMode ? 'theme-text-muted' : 'text-muted-foreground'
+                          }`}
+                        >
+                          {contact.value}
+                        </p>
                       </div>
                     </a>
                   </CardContent>
@@ -255,14 +265,18 @@ const ContactSection = () => {
                 isDarkMode ? 'bg-zinc-900/50 border border-zinc-700' : 'bg-muted/50'
               }`}
             >
-              <h4 className={`font-semibold mb-2 theme-transition ${
-                isDarkMode ? 'theme-text-primary' : 'text-foreground'
-              }`}>
+              <h4
+                className={`font-semibold mb-2 theme-transition ${
+                  isDarkMode ? 'theme-text-primary' : 'text-foreground'
+                }`}
+              >
                 Disponibilité
               </h4>
-              <p className={`text-sm theme-transition ${
-                isDarkMode ? 'theme-text-muted' : 'text-muted-foreground'
-              }`}>
+              <p
+                className={`text-sm theme-transition ${
+                  isDarkMode ? 'theme-text-muted' : 'text-muted-foreground'
+                }`}
+              >
                 Actuellement ouvert aux opportunités de consulting et projets freelance. Temps de réponse habituel : 24-48h.
               </p>
             </div>
@@ -270,7 +284,7 @@ const ContactSection = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default ContactSection;
+export default ContactSection

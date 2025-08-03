@@ -28,7 +28,6 @@ const AboutSection = () => {
     <section id="apropos" className={`py-20 relative overflow-hidden theme-transition ${
       isDarkMode ? 'theme-bg-dark' : 'bg-background'
     }`}>
-      {/* Background cosmique pour le mode sombre */}
       {isDarkMode && (
         <CosmicBackground 
           className="opacity-20" 
@@ -36,9 +35,9 @@ const AboutSection = () => {
         />
       )}
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 font-mono font-light tracking-wider leading-relaxed">
         <div className="text-center mb-16">
-          <h2 className={`text-3xl sm:text-4xl font-bold mb-4 theme-transition ${
+          <h2 className={`text-3xl sm:text-4xl mb-4 theme-transition ${
             isDarkMode ? 'theme-text-primary' : 'text-foreground'
           }`}>
             À propos de moi
@@ -49,21 +48,21 @@ const AboutSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Biography */}
           <div className="space-y-6 animate-fade-in">
-            <p className={`text-lg leading-relaxed theme-transition ${
+            <p className={`text-lg theme-transition ${
               isDarkMode ? 'theme-text-secondary' : 'text-muted-foreground'
             }`}>
               Passionné par l'intelligence artificielle et les données, je transforme des problèmes 
               complexes en solutions innovantes. Avec plus de 5 ans d'expérience en Data Science, 
               j'ai développé une expertise approfondie en Machine Learning, Deep Learning et NLP.
             </p>
-            <p className={`text-lg leading-relaxed theme-transition ${
+            <p className={`text-lg theme-transition ${
               isDarkMode ? 'theme-text-secondary' : 'text-muted-foreground'
             }`}>
               Mon approche combine rigueur scientifique et pragmatisme business pour livrer des 
               modèles performants et déployables en production. J'ai eu l'opportunité de travailler 
               sur des projets variés, de la recommandation personnalisée à la vision par ordinateur.
             </p>
-            <p className={`text-lg leading-relaxed theme-transition ${
+            <p className={`text-lg theme-transition ${
               isDarkMode ? 'theme-text-secondary' : 'text-muted-foreground'
             }`}>
               Toujours en quête d'apprentissage, je reste à l'affût des dernières innovations 
@@ -89,7 +88,7 @@ const AboutSection = () => {
                       <highlight.icon className="h-6 w-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className={`font-semibold mb-2 theme-transition ${
+                      <h3 className={`mb-2 theme-transition ${
                         isDarkMode ? 'theme-text-primary' : 'text-foreground'
                       }`}>
                         {highlight.title}

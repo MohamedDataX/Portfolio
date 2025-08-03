@@ -49,7 +49,6 @@ const SkillsSection = () => {
     <section id="competences" className={`py-20 relative overflow-hidden theme-transition ${
       isDarkMode ? 'theme-bg-dark' : 'bg-muted/30'
     }`}>
-      {/* Background cosmique pour le mode sombre */}
       {isDarkMode && (
         <CosmicBackground 
           className="opacity-15" 
@@ -57,9 +56,9 @@ const SkillsSection = () => {
         />
       )}
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 font-mono font-light tracking-wider leading-relaxed">
         <div className="text-center mb-16">
-          <h2 className={`text-3xl sm:text-4xl font-bold mb-4 theme-transition ${
+          <h2 className={`text-3xl sm:text-4xl mb-4 theme-transition ${
             isDarkMode ? 'theme-text-primary' : 'text-foreground'
           }`}>
             Compétences Techniques
@@ -84,7 +83,7 @@ const SkillsSection = () => {
                   <div className={`inline-flex p-3 rounded-lg ${category.color} mb-3`}>
                     <category.icon className="h-6 w-6" />
                   </div>
-                  <h3 className={`font-semibold theme-transition ${
+                  <h3 className={`theme-transition ${
                     isDarkMode ? 'theme-text-primary' : 'text-foreground'
                   }`}>
                     {category.title}
@@ -112,7 +111,7 @@ const SkillsSection = () => {
 
         {/* Specializations */}
         <div className="animate-slide-in-right">
-          <h3 className={`text-2xl font-semibold text-center mb-8 theme-transition ${
+          <h3 className={`text-2xl text-center mb-8 theme-transition ${
             isDarkMode ? 'theme-text-primary' : 'text-foreground'
           }`}>
             Domaines de spécialisation

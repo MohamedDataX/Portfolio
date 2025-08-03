@@ -51,7 +51,6 @@ const ProjectsSection = () => {
     <section id="projets" className={`py-20 relative overflow-hidden theme-transition ${
       isDarkMode ? 'theme-bg-dark' : 'bg-background'
     }`}>
-      {/* Background cosmique pour le mode sombre */}
       {isDarkMode && (
         <CosmicBackground 
           className="opacity-15" 
@@ -61,13 +60,13 @@ const ProjectsSection = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className={`text-3xl sm:text-4xl font-bold mb-4 theme-transition ${
+          <h2 className={`text-3xl sm:text-4xl font-bold mb-4 theme-transition font-japanese tracking-wide ${
             isDarkMode ? 'theme-text-primary' : 'text-foreground'
           }`}>
             Projets Réalisés
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto rounded"></div>
-          <p className={`text-lg mt-6 max-w-2xl mx-auto theme-transition ${
+          <p className={`text-lg mt-6 max-w-2xl mx-auto theme-transition font-japanese leading-relaxed tracking-wider ${
             isDarkMode ? 'theme-text-secondary' : 'text-muted-foreground'
           }`}>
             Une sélection de projets qui illustrent mon expertise en Data Science et IA
@@ -92,7 +91,7 @@ const ProjectsSection = () => {
                       <project.icon className="h-6 w-6 text-primary" />
                     </div>
                     <div>
-                      <CardTitle className={`text-xl group-hover:text-primary transition-colors theme-transition ${
+                      <CardTitle className={`text-xl group-hover:text-primary transition-colors theme-transition font-japanese tracking-wide ${
                         isDarkMode ? 'theme-text-primary' : ''
                       }`}>
                         {project.title}
@@ -113,7 +112,7 @@ const ProjectsSection = () => {
               </CardHeader>
               
               <CardContent>
-                <p className={`mb-4 leading-relaxed theme-transition ${
+                <p className={`mb-4 leading-relaxed theme-transition font-japanese text-[15px] tracking-wider ${
                   isDarkMode ? 'theme-text-secondary' : 'text-muted-foreground'
                 }`}>
                   {project.description}
