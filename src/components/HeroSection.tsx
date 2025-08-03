@@ -193,15 +193,6 @@ const HeroSection = () => {
 
             {/* Right column - Metadata */}
             <div className="lg:col-span-4 flex flex-col justify-between h-full min-h-[400px]">
-              {/* Year indicator */}
-              <div className="text-right">
-                <div className={`text-6xl sm:text-7xl lg:text-8xl font-extralight leading-none transition-colors duration-500 ${
-                  isDarkMode ? 'text-zinc-800' : 'text-gray-300'
-                }`}>
-                  2025
-                </div>
-              </div>
-              
               {/* Bottom info */}
               <div className="text-right space-y-2 mt-auto">
                 <p className={`text-sm font-light transition-colors duration-500 ${
@@ -212,7 +203,8 @@ const HeroSection = () => {
                 <p className={`text-xs font-light transition-colors duration-500 ${
                   isDarkMode ? 'text-zinc-600' : 'text-gray-500'
                 }`}>
-                  Paris, France
+                  Paris, France <br />
+                  @2025
                 </p>
               </div>
             </div>
