@@ -26,14 +26,9 @@ const AboutSection = () => {
 
   return (
     <section id="apropos" className={`py-20 relative overflow-hidden theme-transition ${
-      isDarkMode ? 'theme-bg-dark' : 'bg-background'
+      isDarkMode ? 'theme-bg-dark' : 'theme-bg-light'
     }`}>
-      {isDarkMode && (
-        <CosmicBackground 
-          className="opacity-20" 
-          opacity={{ dark: 'opacity-10', light: 'opacity-5' }}
-        />
-      )}
+      <CosmicBackground />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 font-mono font-light tracking-wider leading-relaxed">
         <div className="text-center mb-16">
