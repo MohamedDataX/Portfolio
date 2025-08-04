@@ -116,13 +116,11 @@ const ExperienceSection = () => {
     <section
       id="experience"
       className={`py-20 relative overflow-hidden theme-transition ${
-        isDarkMode ? 'theme-bg-dark' : 'bg-muted/30'
+        isDarkMode ? 'theme-bg-dark' : 'theme-bg-light'
       }`}
     >
-      {/* Background cosmique visible uniquement en mode sombre */}
-      {isDarkMode && (
-        <CosmicBackground className="opacity-10" opacity={{ dark: 'opacity-15', light: 'opacity-8' }} />
-      )}
+        <CosmicBackground/>
+    
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Titre de la section */}
