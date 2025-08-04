@@ -3,79 +3,68 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Github, ExternalLink, Brain, TrendingUp, MessageSquare, Eye } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext.tsx';
+import { useLanguage } from '../context/LanguageContext.tsx';
 import CosmicBackground from '@/components/theme/CosmicBackground';
+import translations from '@/lib/i18n';
+
+const iconMap = [Brain, TrendingUp, MessageSquare, Eye];
 
 const ProjectsSection = () => {
   const { isDarkMode } = useTheme();
+  const { language } = useLanguage();
+  const t = translations[language];
 
-  const projects = [
-    {
-      icon: Brain,
-      title: "Système de Recommandation E-commerce",
-      description: "Développement d'un moteur de recommandation hybride utilisant du collaborative filtering et du content-based filtering. Amélioration de 35% du taux de conversion et de 28% du panier moyen.",
-      technologies: ["Python", "PyTorch", "FastAPI", "Redis", "PostgreSQL", "Docker"],
-      githubUrl: "https://github.com/username/recommendation-system",
-      demoUrl: "https://demo-recommendation.com",
-      category: "Machine Learning"
-    },
-    {
-      icon: TrendingUp,
-      title: "Prédiction de Séries Temporelles",
-      description: "Modèle de prédiction des ventes avec gestion de la saisonnalité et des événements externes. MAPE < 8% sur les prédictions à 30 jours, déployé en production pour optimiser les stocks.",
-      technologies: ["Python", "Prophet", "LSTM", "Streamlit", "MLflow", "AWS"],
-      githubUrl: "https://github.com/username/time-series-forecasting",
-      demoUrl: "https://forecasting-demo.streamlit.app",
-      category: "Time Series"
-    },
-    {
-      icon: MessageSquare,
-      title: "Analyseur de Sentiment Client",
-      description: "Pipeline NLP pour analyser les avis clients en temps réel. Classification multi-classes avec 94% de précision, intégration API et dashboard de monitoring des tendances sentiment.",
-      technologies: ["Python", "Transformers", "spaCy", "Flask", "Elasticsearch", "Kibana"],
-      githubUrl: "https://github.com/username/sentiment-analyzer",
-      demoUrl: null,
-      category: "NLP"
-    },
-    {
-      icon: Eye,
-      title: "Détection d'Anomalies Visuelles",
-      description: "Système de détection automatique de défauts qualité sur chaîne de production. Réduction de 60% des faux positifs par rapport au système précédent, déployé sur edge computing.",
-      technologies: ["Python", "OpenCV", "YOLOv8", "TensorRT", "NVIDIA Jetson", "FastAPI"],
-      githubUrl: "https://github.com/username/anomaly-detection",
-      demoUrl: "https://anomaly-demo.com",
-      category: "Computer Vision"
-    }
-  ];
+  const projects = t.projects.map((proj, index) => ({
+    ...proj,
+    icon: iconMap[index],
+    technologies: [
+      ["Python", "PyTorch", "FastAPI", "Redis", "PostgreSQL", "Docker"],
+      ["Python", "Prophet", "LSTM", "Streamlit", "MLflow", "AWS"],
+      ["Python", "Transformers", "spaCy", "Flask", "Elasticsearch", "Kibana"],
+      ["Python", "OpenCV", "YOLOv8", "TensorRT", "NVIDIA Jetson", "FastAPI"]
+    ][index],
+    githubUrl: [
+      "https://github.com/username/recommendation-system",
+      "https://github.com/username/time-series-forecasting",
+      "https://github.com/username/sentiment-analyzer",
+      "https://github.com/username/anomaly-detection"
+    ][index],
+    demoUrl: [
+      "https://demo-recommendation.com",
+      "https://forecasting-demo.streamlit.app",
+      null,
+      "https://anomaly-demo.com"
+    ][index]
+  }));
 
   return (
     <section id="projets" className={`py-20 relative overflow-hidden theme-transition ${
       isDarkMode ? 'theme-bg-dark' : 'theme-bg-light'
     }`}>
-        <CosmicBackground/>
-     
+      <CosmicBackground />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <h2 className={`text-3xl sm:text-4xl font-bold mb-4 theme-transition font-japanese tracking-wide ${
             isDarkMode ? 'theme-text-primary' : 'text-foreground'
           }`}>
-            Projets Réalisés
+            {t.projectsTitle}
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto rounded"></div>
           <p className={`text-lg mt-6 max-w-2xl mx-auto theme-transition font-japanese leading-relaxed tracking-wider ${
             isDarkMode ? 'theme-text-secondary' : 'text-muted-foreground'
           }`}>
-            Une sélection de projets qui illustrent mon expertise en Data Science et IA
+            {t.projectsSubtitle}
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <Card 
+            <Card
               key={index}
               className={`group hover:shadow-card-hover transition-all duration-300 hover:scale-105 animate-fade-in theme-transition ${
-                isDarkMode 
-                  ? 'bg-zinc-900/60 border-zinc-700 backdrop-blur-sm' 
+                isDarkMode
+                  ? 'bg-zinc-900/60 border-zinc-700 backdrop-blur-sm'
                   : ''
               }`}
               style={{ animationDelay: `${index * 0.2}s` }}
@@ -92,11 +81,11 @@ const ProjectsSection = () => {
                       }`}>
                         {project.title}
                       </CardTitle>
-                      <Badge 
-                        variant="outline" 
+                      <Badge
+                        variant="outline"
                         className={`mt-1 theme-transition ${
-                          isDarkMode 
-                            ? 'border-zinc-600 text-zinc-300' 
+                          isDarkMode
+                            ? 'border-zinc-600 text-zinc-300'
                             : ''
                         }`}
                       >
@@ -106,22 +95,22 @@ const ProjectsSection = () => {
                   </div>
                 </div>
               </CardHeader>
-              
+
               <CardContent>
                 <p className={`mb-4 leading-relaxed theme-transition font-japanese text-[15px] tracking-wider ${
                   isDarkMode ? 'theme-text-secondary' : 'text-muted-foreground'
                 }`}>
                   {project.description}
                 </p>
-                
+
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.technologies.map((tech, techIndex) => (
-                    <Badge 
+                    <Badge
                       key={techIndex}
                       variant="secondary"
                       className={`text-xs theme-transition ${
-                        isDarkMode 
-                          ? 'bg-zinc-800/70 text-zinc-300 hover:bg-zinc-700' 
+                        isDarkMode
+                          ? 'bg-zinc-800/70 text-zinc-300 hover:bg-zinc-700'
                           : ''
                       }`}
                     >
@@ -129,32 +118,32 @@ const ProjectsSection = () => {
                     </Badge>
                   ))}
                 </div>
-                
+
                 <div className="flex space-x-3">
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     size="sm"
                     className={`flex-1 theme-transition ${
-                      isDarkMode 
-                        ? 'border-zinc-600 text-zinc-300 hover:bg-zinc-800 hover:text-white' 
+                      isDarkMode
+                        ? 'border-zinc-600 text-zinc-300 hover:bg-zinc-800 hover:text-white'
                         : ''
                     }`}
                     asChild
                   >
                     <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                       <Github className="mr-2 h-4 w-4" />
-                      Code
+                      {t.projectButtonCode}
                     </a>
                   </Button>
                   {project.demoUrl && (
-                    <Button 
+                    <Button
                       size="sm"
                       className="flex-1"
                       asChild
                     >
                       <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
                         <ExternalLink className="mr-2 h-4 w-4" />
-                        Démo
+                        {t.projectButtonDemo}
                       </a>
                     </Button>
                   )}
