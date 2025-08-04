@@ -72,15 +72,11 @@ const ContactSection = () => {
     <section
       id="contact"
       className={`py-20 relative overflow-hidden theme-transition ${
-        isDarkMode ? 'theme-bg-dark' : 'bg-background'
+        isDarkMode ? 'theme-bg-dark' : 'theme-bg-light'
       } font-mono font-light tracking-wider leading-relaxed`}
     >
-      {isDarkMode && (
-        <CosmicBackground
-          className="opacity-10"
-          opacity={{ dark: 'opacity-15', light: 'opacity-8' }}
-        />
-      )}
+      
+        <CosmicBackground/>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">

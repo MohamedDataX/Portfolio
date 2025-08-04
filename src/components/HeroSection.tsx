@@ -26,10 +26,10 @@ const HeroSection = () => {
         ? 'theme-bg-dark' 
         : 'theme-bg-light'
     }`}>
-      {/* Background cosmique réutilisable */}
+      
       <CosmicBackground />
 
-      {/* Theme toggle réutilisable */}
+      
       <ThemeToggle />
 
       {/* Main content container */}
