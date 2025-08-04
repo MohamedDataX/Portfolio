@@ -11,18 +11,7 @@ const Footer = () => {
         <div className="absolute bottom-10 right-10 w-24 h-24 bg-purple-500 rounded-full blur-2xl animate-pulse delay-1000" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-cyan-400 rounded-full blur-3xl animate-pulse delay-500" />
       </div>
-
-      {/* Grille de points */}
-      <div className="absolute inset-0 opacity-5">
-        <div
-          className="w-full h-full"
-          style={{
-            backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
-            backgroundSize: '30px 30px',
-          }}
-        />
-      </div>
-
+      {/* Contenu du footer */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="mb-6 transform hover:scale-105 transition-all duration-300">
           <p className="flex items-center justify-center space-x-3 text-lg font-medium">
