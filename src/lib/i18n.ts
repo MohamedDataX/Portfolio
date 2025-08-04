@@ -70,7 +70,78 @@ const translations = {
         description: "Système de détection automatique de défauts qualité sur chaîne de production. Réduction de 60% des faux positifs par rapport au système précédent, déployé sur edge computing.",
         category: "Vision par Ordinateur"
       }
+    ],
+    experienceTitle: "Expérience & Formation",
+    workExperience: [
+  {
+    company: "TechCorp Solutions",
+    role: "Senior Data Scientist",
+    period: "2022 - Présent",
+    location: "Paris, France",
+    description: "Lead de l'équipe Data Science (5 personnes). Développement de solutions IA pour l'optimisation des processus métier et l'aide à la décision.",
+    achievements: [
+      "Mise en place d'une architecture MLOps complète",
+      "Réduction de 40% des coûts opérationnels via automation IA",
+      "Encadrement et formation de 3 data scientists juniors"
+    ],
+    technologies: ["Python", "PyTorch", "Kubernetes", "MLflow", "AWS"]
+  },
+  {
+    company: "DataFlow Analytics",
+    role: "Data Scientist",
+    period: "2020 - 2022",
+    location: "Lyon, France",
+    description: "Développement de modèles prédictifs pour des clients dans les secteurs retail et finance. Spécialisation en NLP et computer vision.",
+    achievements: [
+      "Déploiement de 15+ modèles ML en production",
+      "Amélioration de 25% des KPIs clients moyens",
+      "Création d'un framework interne de développement ML"
+    ],
+    technologies: ["Python", "TensorFlow", "Docker", "FastAPI", "GCP"]
+  },
+  {
+    company: "StartupAI",
+    role: "Junior Data Scientist",
+    period: "2019 - 2020",
+    location: "Paris, France",
+    description: "Premier poste en Data Science dans une startup spécialisée en recommandation personnalisée. Développement de bout en bout des solutions IA.",
+    achievements: [
+      "Développement du premier moteur de recommandation",
+      "Gestion complète du cycle de vie des données",
+      "Collaboration directe avec les équipes produit"
+    ],
+    technologies: ["Python", "Scikit-learn", "Flask", "PostgreSQL"]
+  }
+],
+education: [
+  {
+    school: "École Centrale Paris",
+    degree: "Master en Data Science & IA",
+    period: "2017 - 2019",
+    location: "Paris, France",
+    description: "Spécialisation en Machine Learning et Deep Learning. Projet de fin d'études sur l'analyse prédictive en finance.",
+    achievements: [
+      "Major de promotion (GPA: 18.5/20)",
+      "Thèse sur les réseaux de neurones adversaires",
+      "Stage de recherche au MIT (6 mois)"
     ]
+  },
+  {
+    school: "Université Pierre et Marie Curie",
+    degree: "Licence en Mathématiques Appliquées",
+    period: "2014 - 2017",
+    location: "Paris, France",
+    description: "Formation solide en statistiques, probabilités et mathématiques pour l'ingénieur.",
+    achievements: [
+      "Mention Très Bien",
+      "Spécialisation en statistiques avancées",
+      "Prix d'excellence en analyse numérique"
+      ]
+     }
+    ],
+
+    
+
    
   },
   en: {
@@ -144,7 +215,76 @@ const translations = {
         description: "Automated quality defect detection for production lines. Reduced false positives by 60% vs prior system, deployed to edge devices.",
         category: "Computer Vision"
       }
+    ],
+    experienceTitle: "Experience & Education",
+workExperience: [
+  {
+    company: "TechCorp Solutions",
+    role: "Senior Data Scientist",
+    period: "2022 - Present",
+    location: "Paris, France",
+    description: "Leading the Data Science team (5 people). Developing AI solutions for business process optimization and decision support.",
+    achievements: [
+      "Implemented a full MLOps architecture",
+      "Reduced operational costs by 40% through AI automation",
+      "Mentored and trained 3 junior data scientists"
+    ],
+    technologies: ["Python", "PyTorch", "Kubernetes", "MLflow", "AWS"]
+  },
+  {
+    company: "DataFlow Analytics",
+    role: "Data Scientist",
+    period: "2020 - 2022",
+    location: "Lyon, France",
+    description: "Built predictive models for clients in retail and finance. Specialized in NLP and computer vision.",
+    achievements: [
+      "Deployed 15+ ML models to production",
+      "Improved client KPIs by 25% on average",
+      "Created an internal ML development framework"
+    ],
+    technologies: ["Python", "TensorFlow", "Docker", "FastAPI", "GCP"]
+  },
+  {
+    company: "StartupAI",
+    role: "Junior Data Scientist",
+    period: "2019 - 2020",
+    location: "Paris, France",
+    description: "First Data Science role at a startup specializing in personalized recommendation. Developed end-to-end AI solutions.",
+    achievements: [
+      "Developed the first recommendation engine",
+      "Managed the entire data lifecycle",
+      "Collaborated closely with product teams"
+    ],
+    technologies: ["Python", "Scikit-learn", "Flask", "PostgreSQL"]
+  }
+],
+education: [
+  {
+    school: "École Centrale Paris",
+    degree: "Master in Data Science & AI",
+    period: "2017 - 2019",
+    location: "Paris, France",
+    description: "Specialized in Machine Learning and Deep Learning. Final project focused on predictive finance analytics.",
+    achievements: [
+      "Valedictorian (GPA: 18.5/20)",
+      "Thesis on adversarial neural networks",
+      "Research internship at MIT (6 months)"
     ]
+  },
+  {
+    school: "Pierre and Marie Curie University",
+    degree: "Bachelor in Applied Mathematics",
+    period: "2014 - 2017",
+    location: "Paris, France",
+    description: "Strong background in statistics, probabilities, and applied mathematics for engineering.",
+    achievements: [
+      "Graduated with honors",
+      "Specialized in advanced statistics",
+      "Excellence award in numerical analysis"
+    ]
+  }
+],
+
     
   },
 };
