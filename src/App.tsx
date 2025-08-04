@@ -20,7 +20,7 @@ const App = () => (
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <ThemeToggle position="fixed" />
+          <ThemeToggle size="lg" position="fixed" />
 
           <BrowserRouter>
             <Routes>
