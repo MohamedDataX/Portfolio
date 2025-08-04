@@ -2,9 +2,13 @@ import { Download, ChevronDown } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext.tsx';
 import CosmicBackground from '@/components/theme/CosmicBackground';
 import ThemeToggle from '@/components/theme/ThemeToggle';
+import { useLanguage } from '../context/LanguageContext';
+import translations from "@/lib/i18n"; 
 
 const HeroSection = () => {
   const { isDarkMode } = useTheme();
+  const { language, toggleLanguage } = useLanguage();
+  const t = translations[language];
 
   const scrollToAbout = () => {
     const element = document.getElementById('apropos');
@@ -30,7 +34,7 @@ const HeroSection = () => {
       <CosmicBackground />
 
       
-      <ThemeToggle />
+     
 
       {/* Main content container */}
       <div className="relative z-10 min-h-[calc(100vh-4rem)] flex flex-col justify-center py-8">

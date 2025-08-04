@@ -1,19 +1,27 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from "@/context/LanguageContext";
+import translations from "@/lib/i18n"; 
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('accueil');
+  const { language, toggleLanguage } = useLanguage();
+  const t = translations[language];
+  
+
 
   const navItems = [
-    { id: 'accueil', label: 'Accueil' },
-    { id: 'apropos', label: 'À propos' },
-    { id: 'competences', label: 'Compétences' },
-    { id: 'projets', label: 'Projets' },
-    { id: 'experience', label: 'Expérience' },
-    { id: 'contact', label: 'Contact' },
-  ];
+  { id: 'accueil', label: t.accueil },
+  { id: 'apropos', label: t.apropos },
+  { id: 'competences', label: t.competences },
+  { id: 'projets', label: t.projets },
+  { id: 'experience', label: t.experience },
+  { id: 'contact', label: t.contact },
+];
+
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,11 +55,22 @@ const Navigation = () => {
 
   return (
     <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-md border-b border-border z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="font-semibold text-lg text-foreground">
-            Data Scientist
-          </div>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex justify-between items-center h-16">
+      {/* Bouton bascule langue stylé */}
+      <Button
+        variant="outline"
+        size="sm"
+        onClick={toggleLanguage}
+          className="ml-4 rounded-full border-primary text-primary hover:bg-gray-800 hover:text-white transition-colors duration-300 font-semibold"
+          aria-label="Toggle Language"
+      >
+        {language === 'fr' ? 'EN' : 'FR'}
+      </Button>
+
+      <div className="font-semibold text-lg text-foreground">
+        {t.dataScientist}
+      </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
