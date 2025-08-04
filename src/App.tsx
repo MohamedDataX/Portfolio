@@ -6,9 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContext";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import './index.css';  // ou le nom de ton fichier CSS principal
-
-// Import des styles de thème
+import ThemeToggle from "@/components/theme/ThemeToggle";  // <-- import du toggle
+import './index.css';
 import "@/styles/theme.css";
 
 const queryClient = new QueryClient();
@@ -19,10 +18,14 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
+
+        {/* Bouton de dark mode/light mode fixe sur toute l'app */}
+        <ThemeToggle position="fixed" />
+
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            {/* autres routes */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
