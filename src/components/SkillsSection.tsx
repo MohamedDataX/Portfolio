@@ -47,14 +47,11 @@ const SkillsSection = () => {
 
   return (
     <section id="competences" className={`py-20 relative overflow-hidden theme-transition ${
-      isDarkMode ? 'theme-bg-dark' : 'bg-muted/30'
+      isDarkMode ? 'theme-bg-dark' : 'theme-bg-light'
     }`}>
-      {isDarkMode && (
-        <CosmicBackground 
-          className="opacity-15" 
-          opacity={{ dark: 'opacity-20', light: 'opacity-10' }}
-        />
-      )}
+      
+        <CosmicBackground/>
+      
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 font-mono font-light tracking-wider leading-relaxed">
         <div className="text-center mb-16">
