@@ -1,26 +1,30 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Award, Target, Users } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext.tsx';
+import { useLanguage } from '../context/LanguageContext';
+import translations from '@/lib/i18n';
 import CosmicBackground from '@/components/theme/CosmicBackground';
 
 const AboutSection = () => {
   const { isDarkMode } = useTheme();
+  const { language } = useLanguage();
+  const t = translations[language];
 
   const highlights = [
     {
       icon: Target,
-      title: "Compétence Technique",
-      description: "Formation en IA & Big Data, projets concrets en Machine Learning"
+      title: t.highlight1Title,
+      description: t.highlight1Desc
     },
     {
       icon: Award,
-      title: "Projets Impactants",
-      description: "Solutions IA déployées en production avec ROI mesurable"
+      title: t.highlight2Title,
+      description: t.highlight2Desc
     },
     {
       icon: Users,
-      title: "Esprit d'Équipe",
-      description: "Collaboration avec des équipes pluridisciplinaires et agiles"
+      title: t.highlight3Title,
+      description: t.highlight3Desc
     }
   ];
 
@@ -29,13 +33,13 @@ const AboutSection = () => {
       isDarkMode ? 'theme-bg-dark' : 'theme-bg-light'
     }`}>
       <CosmicBackground />
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 font-mono font-light tracking-wider leading-relaxed">
         <div className="text-center mb-16">
           <h2 className={`text-3xl sm:text-4xl mb-4 theme-transition ${
             isDarkMode ? 'theme-text-primary' : 'text-foreground'
           }`}>
-            À propos de moi
+            {t.aboutTitle}
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto rounded"></div>
         </div>
@@ -46,23 +50,17 @@ const AboutSection = () => {
             <p className={`text-lg theme-transition ${
               isDarkMode ? 'theme-text-secondary' : 'text-muted-foreground'
             }`}>
-              Passionné par l'intelligence artificielle et les données, je transforme des problèmes 
-              complexes en solutions innovantes. Avec plus de 5 ans d'expérience en Data Science, 
-              j'ai développé une expertise approfondie en Machine Learning, Deep Learning et NLP.
+              {t.bioPart1}
             </p>
             <p className={`text-lg theme-transition ${
               isDarkMode ? 'theme-text-secondary' : 'text-muted-foreground'
             }`}>
-              Mon approche combine rigueur scientifique et pragmatisme business pour livrer des 
-              modèles performants et déployables en production. J'ai eu l'opportunité de travailler 
-              sur des projets variés, de la recommandation personnalisée à la vision par ordinateur.
+              {t.bioPart2}
             </p>
             <p className={`text-lg theme-transition ${
               isDarkMode ? 'theme-text-secondary' : 'text-muted-foreground'
             }`}>
-              Toujours en quête d'apprentissage, je reste à l'affût des dernières innovations 
-              technologiques pour apporter une valeur ajoutée constante aux projets sur lesquels 
-              je travaille.
+              {t.bioPart3}
             </p>
           </div>
 
