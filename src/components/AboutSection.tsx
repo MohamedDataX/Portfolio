@@ -5,6 +5,8 @@ import { useLanguage } from '../context/LanguageContext';
 import translations from '@/lib/i18n';
 import CosmicBackground from '@/components/theme/CosmicBackground';
 
+
+
 const AboutSection = () => {
   const { isDarkMode } = useTheme();
   const { language } = useLanguage();
