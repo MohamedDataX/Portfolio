@@ -159,7 +159,7 @@ education: [
     missionPart2: 'Exploring the potential of <span class="font-medium theme-text-primary">artificial intelligence</span>.<br />Believing it can unlock new opportunities and solutions,<br />with a mission to reveal its possibilities.',
     missionPart3: 'I pursue insights through hands-on research,<br />experiments, and real-world applications.',
     aboutTitle: "About Me",
-    bioPart1: "Passionate about AI and data, I turn complex problems into innovative solutions. With over  years of experience in Data Science, I've developed deep expertise in Machine Learning, Deep Learning, and NLP.",
+    bioPart1: "Passionate about AI and data, I turn complex problems into innovative solutions. With over  years of experience in Data, I've developed deep expertise in Machine Learning, Deep Learning, and NLP.",
     bioPart2: "My approach combines scientific rigor with business pragmatism to deliver performant models ready for production. I’ve worked on a variety of projects, from personalized recommendation systems to computer vision.",
     bioPart3: "Always eager to learn, I stay updated on the latest tech innovations to continuously bring value to the projects I contribute to.",
     highlight1Title: "Technical Skill",
