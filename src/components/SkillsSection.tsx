@@ -16,25 +16,25 @@ const SkillsSection = () => {
       icon: Code,
       title: t.category1Title,
       color: "bg-blue-500/10 text-blue-600",
-      skills: ["Python", "SQL", "R", "Java", "Git", "Docker", "AWS", "GCP"]
+      skills: ["Python", "SQL", "R", "Java", "Git", "Docker", "Azure", "GCP"]
     },
     {
       icon: Database,
       title: t.category2Title,
       color: "bg-green-500/10 text-green-600",
-      skills: ["Pandas", "NumPy", "PySpark", "Airflow", "Kafka", "MongoDB", "PostgreSQL", "Elasticsearch"]
+      skills: ["PySpark", "Pandas", "NumPy", "Airflow", "MongoDB", "PostgreSQL","SSMS", "SSIS"]
     },
     {
       icon: Brain,
       title: t.category3Title,
       color: "bg-purple-500/10 text-purple-600",
-      skills: ["Scikit-learn", "PyTorch", "TensorFlow", "Keras", "XGBoost", "LightGBM", "MLflow", "Kubeflow"]
+      skills: ["Scikit-learn", "PyTorch", "TensorFlow", "Keras", "XGBoost"]
     },
     {
       icon: BarChart3,
       title: t.category4Title,
       color: "bg-orange-500/10 text-orange-600",
-      skills: ["Matplotlib", "Seaborn", "Plotly", "Streamlit", "Tableau", "Power BI", "D3.js", "Grafana"]
+      skills: ["Matplotlib", "Seaborn", "Plotly", "Streamlit", "Tableau", "Power BI"]
     }
   ];
 
