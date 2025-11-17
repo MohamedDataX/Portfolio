@@ -54,10 +54,10 @@ const ExperienceSection = () => {
       description: "Travail avec plusieur client de different domaine,",
       achievements: [
         "Déploiement de 15+ modèles ML en production",
-        "Amélioration de 25% des KPIs clients moyens",
-        "Création d'un framework interne de développement ML"
+        "Optimisation de pipelines ETL/ELT pour des gains de performance jusqu'à 40%",
+        "Optimisation des requêtes SQL, développement de procédures stockées et indexation des tables et gestion des clusters pour maximiser les performances des bases de données"
       ],
-      technologies: ["Python", "TensorFlow", "Docker", "FastAPI", "GCP"]
+      technologies: ["Microsoft Fabric", "PySpark", "SSIS", "SSMS", "Power BI", "Tableau", "Azure", "SQL", "T-SQL"]
     },
     {
       type: 'work',
@@ -69,19 +69,23 @@ const ExperienceSection = () => {
       achievements: [
         "Développement du premier moteur de recommandation",
         "Gestion complète du cycle de vie des données",
-        "Collaboration directe avec les équipes produit"
+        "Collaboration avec les PMO & Scrum Masters pour assurer la livraison des projets en mode Agile."
       ],
-      technologies: ["Python", "Scikit-learn", "Flask", "PostgreSQL"]
+      technologies: ["SSIS", "SSMS", "Azure", "SQL"]
     }
   ];
 
 
 
+
+
+  /* Education */
+
   const education: Education[] = [
     {
       type: 'education',
       school: "École Centrale Paris",
-      degree: "Master en Data Science & IA",
+      degree: "Master Intelligence Artificielle et Big Data",
       period: "2017 - 2019",
       location: "Paris, France",
       description: "Spécialisation en Machine Learning et Deep Learning. Projet de fin d'études sur l'analyse prédictive en finance.",
