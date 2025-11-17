@@ -33,25 +33,25 @@ const ExperienceSection = () => {
   const experiences: WorkExperience[] = [
     {
       type: 'work',
-      company: "TechCorp Solutions",
-      role: "Senior Data Scientist",
-      period: "2022 - Présent",
+      company: "La Poste Groupe",
+      role: "DATA Scientist",
+      period: "Sep 2025 - Présent",
       location: "Paris, France",
-      description: "Lead de l'équipe Data Science (5 personnes). Développement de solutions IA pour l'optimisation des processus métier et l'aide à la décision.",
+      description: "Sous Agile, developement de slution IA avancé au sein de la DSI pole DATA/ IA.",
       achievements: [
-        "Mise en place d'une architecture MLOps complète",
-        "Réduction de 40% des coûts opérationnels via automation IA",
-        "Encadrement et formation de 3 data scientists juniors"
+        "Mise en place d'un modele NLP moderne pour un probleme de classification textuelle",
+        "Réduction de 85% de temps pour les taches opérationneles via automation IA"
+        
       ],
-      technologies: ["Python", "PyTorch", "Kubernetes", "MLflow", "AWS"]
+      technologies: ["Python", "Hugging Face", "NLP", "CML", "DSS"]
     },
     {
       type: 'work',
-      company: "DataFlow Analytics",
-      role: "Data Scientist",
-      period: "2020 - 2022",
-      location: "Lyon, France",
-      description: "Développement de modèles prédictifs pour des clients dans les secteurs retail et finance. Spécialisation en NLP et computer vision.",
+      company: "Actinvision",
+      role: "DATA Consultant",
+      period: "Sep 2024 - Sep 2025",
+      location: "Strasbourg, France",
+      description: "Travail avec plusieur client de different domaine,",
       achievements: [
         "Déploiement de 15+ modèles ML en production",
         "Amélioration de 25% des KPIs clients moyens",
@@ -61,11 +61,11 @@ const ExperienceSection = () => {
     },
     {
       type: 'work',
-      company: "StartupAI",
-      role: "Junior Data Scientist",
-      period: "2019 - 2020",
-      location: "Paris, France",
-      description: "Premier poste en Data Science dans une startup spécialisée en recommandation personnalisée. Développement de bout en bout des solutions IA.",
+      company: "Azura Groupe",
+      role: "DATA Developer",
+      period: "Jun 2024 - Sep 2024",
+      location: "Perpignan, France",
+      description: "Premier poste autour de la  Data dans un grand groupe au sein de la seule équipe DATA. Développement de bout en bout des solutions DATA.",
       achievements: [
         "Développement du premier moteur de recommandation",
         "Gestion complète du cycle de vie des données",
@@ -74,6 +74,8 @@ const ExperienceSection = () => {
       technologies: ["Python", "Scikit-learn", "Flask", "PostgreSQL"]
     }
   ];
+
+
 
   const education: Education[] = [
     {
