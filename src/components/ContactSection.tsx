@@ -28,20 +28,40 @@ const ContactSection = () => {
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+  e.preventDefault();
+  setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000))
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
 
+    const data = await res.json();
+
+    if (res.ok) {
+      toast({
+        title: 'Message sent!',
+        description: 'Thank you for your message. I’ll get back to you soon.',
+      });
+      setFormData({ name: '', email: '', message: '' });
+    } else {
+      toast({
+        title: 'Error',
+        description: data.message || 'Something went wrong.',
+      });
+    }
+  } catch (err) {
     toast({
-      title: "Message sent!",
-      description: "Thank you for your message. I’ll get back to you as soon as possible."
-    })
-
-    setFormData({ name: '', email: '', message: '' })
-    setIsSubmitting(false)
+      title: 'Error',
+      description: 'Failed to send message.',
+    });
   }
+
+  setIsSubmitting(false);
+};
+
 
   const contactInfo = [
     {
@@ -62,7 +82,7 @@ const ContactSection = () => {
       icon: Github,
       label: "GitHub",
       value: "@mohamedASH404",
-      href: "https://github.com/mohamedASH404",
+      href: "https://github.com/MohamedDataX",
       color: "text-gray-700"
     }
   ]
