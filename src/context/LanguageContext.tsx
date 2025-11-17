@@ -1,33 +1,17 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-
-type Language = 'fr' | 'en';
+import React, { createContext, useContext, ReactNode } from 'react';
 
 interface LanguageContextType {
-  language: Language;
-  toggleLanguage: () => void;
+  language: 'en';
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguage] = useState<Language>(() => {
-    const storedLang = localStorage.getItem('language');
-    if (storedLang === 'fr' || storedLang === 'en') {
-      return storedLang;
-    }
-    return 'en'; // Default language
-  });
-
-  useEffect(() => {
-    localStorage.setItem('language', language);
-  }, [language]);
-
-  const toggleLanguage = () => {
-    setLanguage(prev => (prev === 'fr' ? 'en' : 'fr'));
-  };
+  // Always English — no toggle or localStorage needed
+  const value: LanguageContextType = { language: 'en' };
 
   return (
-    <LanguageContext.Provider value={{ language, toggleLanguage }}>
+    <LanguageContext.Provider value={value}>
       {children}
     </LanguageContext.Provider>
   );
