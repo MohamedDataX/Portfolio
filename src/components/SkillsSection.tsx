@@ -2,44 +2,52 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Code, Database, Brain, BarChart3 } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext.tsx';
-import { useLanguage } from '../context/LanguageContext';
-import translations from '@/lib/i18n';
 import CosmicBackground from '@/components/theme/CosmicBackground';
 
 const SkillsSection = () => {
   const { isDarkMode } = useTheme();
-  const { language } = useLanguage();
-  const t = translations[language];
 
   const skillCategories = [
     {
       icon: Code,
-      title: t.category1Title,
+      title: "Programming & Tools",
       color: "bg-blue-500/10 text-blue-600",
       skills: ["Python", "SQL", "R", "Java", "Git", "Docker", "Azure", "GCP"]
     },
     {
       icon: Database,
-      title: t.category2Title,
+      title: "Data Engineering",
       color: "bg-green-500/10 text-green-600",
       skills: ["PySpark", "Pandas", "NumPy", "Airflow", "MongoDB", "PostgreSQL","SSMS", "SSIS"]
     },
     {
       icon: Brain,
-      title: t.category3Title,
+      title: "Machine Learning & AI",
       color: "bg-purple-500/10 text-purple-600",
       skills: ["Scikit-learn", "PyTorch", "TensorFlow", "Keras", "XGBoost"]
     },
     {
       icon: BarChart3,
-      title: t.category4Title,
+      title: "Data Visualization",
       color: "bg-orange-500/10 text-orange-600",
       skills: ["Matplotlib", "Seaborn", "Plotly", "Streamlit", "Tableau", "Power BI"]
     }
   ];
 
+  const specializations = [
+    "Natural Language Processing (NLP)",
+    "Computer Vision",
+    "Time Series Forecasting",
+    "Recommender Systems",
+    "MLOps & Model Deployment",
+    "Statistical Modeling",
+    "Deep Learning Architectures",
+    "Cloud",
+    "ETL/ELT"
+  ];
+
   return (
-    <section id="competences" className={`py-20 relative overflow-hidden theme-transition ${
+    <section id="skills" className={`py-20 relative overflow-hidden theme-transition ${
       isDarkMode ? 'theme-bg-dark' : 'theme-bg-light'
     }`}>
       <CosmicBackground />
@@ -49,7 +57,7 @@ const SkillsSection = () => {
           <h2 className={`text-3xl sm:text-4xl mb-4 theme-transition ${
             isDarkMode ? 'theme-text-primary' : 'text-foreground'
           }`}>
-            {t.skillsTitle}
+            Technical Skills
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto rounded"></div>
         </div>
@@ -102,10 +110,10 @@ const SkillsSection = () => {
           <h3 className={`text-2xl text-center mb-8 theme-transition ${
             isDarkMode ? 'theme-text-primary' : 'text-foreground'
           }`}>
-            {t.specializationTitle}
+            Specializations
           </h3>
           <div className="flex flex-wrap justify-center gap-3">
-            {t.specializations.map((spec, index) => (
+            {specializations.map((spec, index) => (
               <Badge
                 key={index}
                 variant="outline"
