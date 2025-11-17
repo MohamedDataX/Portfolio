@@ -21,7 +21,6 @@ const ContactSection = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
-
     setFormData(prev => ({
       ...prev,
       [name]: value
@@ -36,8 +35,8 @@ const ContactSection = () => {
     await new Promise(resolve => setTimeout(resolve, 1000))
 
     toast({
-      title: "Message envoyé !",
-      description: "Merci pour votre message. Je vous répondrai dans les plus brefs délais."
+      title: "Message sent!",
+      description: "Thank you for your message. I’ll get back to you as soon as possible."
     })
 
     setFormData({ name: '', email: '', message: '' })
@@ -75,8 +74,7 @@ const ContactSection = () => {
         isDarkMode ? 'theme-bg-dark' : 'theme-bg-light'
       } font-mono font-light tracking-wider leading-relaxed`}
     >
-      
-        <CosmicBackground/>
+      <CosmicBackground />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
@@ -85,7 +83,7 @@ const ContactSection = () => {
               isDarkMode ? 'theme-text-primary' : 'text-foreground'
             }`}
           >
-            Contactez-moi
+            Contact Me
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto rounded"></div>
           <p
@@ -93,7 +91,7 @@ const ContactSection = () => {
               isDarkMode ? 'theme-text-muted' : 'text-muted-foreground'
             }`}
           >
-            Une question, un projet ou simplement envie d'échanger ? N&apos;hésitez pas à me contacter !
+            Have a question, a project, or just want to connect? Don’t hesitate to reach out!
           </p>
         </div>
 
@@ -107,7 +105,7 @@ const ContactSection = () => {
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
                 <Send className="h-5 w-5 text-primary" />
-                <span>Envoyez-moi un message</span>
+                <span>Send Me a Message</span>
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -119,7 +117,7 @@ const ContactSection = () => {
                       isDarkMode ? 'theme-text-primary' : 'text-foreground'
                     }`}
                   >
-                    Nom complet *
+                    Full Name *
                   </label>
                   <Input
                     id="name"
@@ -128,7 +126,7 @@ const ContactSection = () => {
                     required
                     value={formData.name}
                     onChange={handleInputChange}
-                    placeholder="Votre nom"
+                    placeholder="Your name"
                     className="w-full"
                   />
                 </div>
@@ -149,7 +147,7 @@ const ContactSection = () => {
                     required
                     value={formData.email}
                     onChange={handleInputChange}
-                    placeholder="votre.email@exemple.com"
+                    placeholder="your.email@example.com"
                     className="w-full"
                   />
                 </div>
@@ -169,7 +167,7 @@ const ContactSection = () => {
                     required
                     value={formData.message}
                     onChange={handleInputChange}
-                    placeholder="Décrivez votre projet, question ou demande..."
+                    placeholder="Describe your project, question, or request..."
                     rows={6}
                     className="w-full resize-none"
                   />
@@ -184,12 +182,12 @@ const ContactSection = () => {
                   {isSubmitting ? (
                     <>
                       <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                      Envoi en cours...
+                      Sending...
                     </>
                   ) : (
                     <>
                       <Send className="mr-2 h-4 w-4" />
-                      Envoyer le message
+                      Send Message
                     </>
                   )}
                 </Button>
@@ -205,16 +203,14 @@ const ContactSection = () => {
                   isDarkMode ? 'theme-text-primary' : 'text-foreground'
                 }`}
               >
-                Restons connectés
+                Stay Connected
               </h3>
               <p
                 className={`leading-relaxed mb-8 theme-transition ${
                   isDarkMode ? 'theme-text-muted' : 'text-muted-foreground'
                 }`}
               >
-                Je suis toujours intéressé par de nouveaux défis techniques, des collaborations
-                innovantes ou simplement discuter de Data Science et d&apos;IA. N&apos;hésitez pas à me
-                contacter par l&apos;un des moyens ci-dessous.
+                I’m always open to new technical challenges, innovative collaborations, or simply chatting about Data Science and AI. Feel free to reach out using any of the options below.
               </p>
             </div>
 
@@ -266,14 +262,14 @@ const ContactSection = () => {
                   isDarkMode ? 'theme-text-primary' : 'text-foreground'
                 }`}
               >
-                Disponibilité
+                Availability
               </h4>
               <p
                 className={`text-sm theme-transition ${
                   isDarkMode ? 'theme-text-muted' : 'text-muted-foreground'
                 }`}
               >
-                Actuellement ouvert aux opportunités de consulting et projets freelance. Temps de réponse habituel : 24-48h.
+                Currently on an apprenticeship contract. Typical response time: 24–48 hours.
               </p>
             </div>
           </div>

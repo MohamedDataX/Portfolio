@@ -3,42 +3,55 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Github, ExternalLink, Brain, TrendingUp, MessageSquare, Eye } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext.tsx';
-import { useLanguage } from '../context/LanguageContext.tsx';
 import CosmicBackground from '@/components/theme/CosmicBackground';
-import translations from '@/lib/i18n';
+import { title } from 'process';
 
 const iconMap = [Brain, TrendingUp, MessageSquare, Eye];
 
 const ProjectsSection = () => {
   const { isDarkMode } = useTheme();
-  const { language } = useLanguage();
-  const t = translations[language];
 
-  const projects = t.projects.map((proj, index) => ({
-    ...proj,
-    icon: iconMap[index],
-    technologies: [
-      ["Python", "PyTorch", "FastAPI", "Redis", "PostgreSQL", "Docker"],
-      ["Python", "Prophet", "LSTM", "Streamlit", "MLflow", "AWS"],
-      ["Python", "Transformers", "spaCy", "Flask", "Elasticsearch", "Kibana"],
-      ["Python", "OpenCV", "YOLOv8", "TensorRT", "NVIDIA Jetson", "FastAPI"]
-    ][index],
-    githubUrl: [
-      "https://github.com/username/recommendation-system",
-      "https://github.com/username/time-series-forecasting",
-      "https://github.com/username/sentiment-analyzer",
-      "https://github.com/username/anomaly-detection"
-    ][index],
-    demoUrl: [
-      "https://demo-recommendation.com",
-      "https://forecasting-demo.streamlit.app",
-      null,
-      "https://anomaly-demo.com"
-    ][index]
-  }));
+  const projects = [
+    {
+      title: "Recommendation System",
+      category: "Machine Learning",
+      description: "A personalized recommendation system built with Python, PyTorch, and FastAPI. Uses Redis caching and PostgreSQL for data storage. Deployed via Docker.",
+      icon: iconMap[0],
+      technologies: ["Python", "PyTorch", "FastAPI", "Redis", "PostgreSQL", "Docker"],
+      githubUrl: "https://github.com/username/recommendation-system",
+      demoUrl: "https://demo-recommendation.com"
+    },
+    {
+      title: "Time Series Forecasting",
+      category: "Data Science",
+      description: "A time series forecasting project using Prophet and LSTM models. Includes Streamlit interface, MLflow tracking, and AWS deployment.",
+      icon: iconMap[1],
+      technologies: ["Python", "Prophet", "LSTM", "Streamlit", "MLflow", "AWS"],
+      githubUrl: "https://github.com/username/time-series-forecasting",
+      demoUrl: "https://forecasting-demo.streamlit.app"
+    },
+    {
+      title: "Sentiment Analyzer",
+      category: "Natural Language Processing",
+      description: "Analyzes text sentiment using Transformers and spaCy. Backend built with Flask and data visualized via Elasticsearch and Kibana.",
+      icon: iconMap[2],
+      technologies: ["Python", "Transformers", "spaCy", "Flask", "Elasticsearch", "Kibana"],
+      githubUrl: "https://github.com/username/sentiment-analyzer",
+      demoUrl: null
+    },
+    {
+      title: "Anomaly Detection",
+      category: "Computer Vision",
+      description: "Detects anomalies in images using OpenCV, YOLOv8, and TensorRT. Deployed on NVIDIA Jetson devices with FastAPI backend.",
+      icon: iconMap[3],
+      technologies: ["Python", "OpenCV", "YOLOv8", "TensorRT", "NVIDIA Jetson", "FastAPI"],
+      githubUrl: "https://github.com/username/anomaly-detection",
+      demoUrl: "https://anomaly-demo.com"
+    }
+  ];
 
   return (
-    <section id="projets" className={`py-20 relative overflow-hidden theme-transition ${
+    <section id="projects" className={`py-20 relative overflow-hidden theme-transition ${
       isDarkMode ? 'theme-bg-dark' : 'theme-bg-light'
     }`}>
       <CosmicBackground />
@@ -48,13 +61,13 @@ const ProjectsSection = () => {
           <h2 className={`text-3xl sm:text-4xl font-bold mb-4 theme-transition font-japanese tracking-wide ${
             isDarkMode ? 'theme-text-primary' : 'text-foreground'
           }`}>
-            {t.projectsTitle}
+            Projects
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto rounded"></div>
           <p className={`text-lg mt-6 max-w-2xl mx-auto theme-transition font-japanese leading-relaxed tracking-wider ${
             isDarkMode ? 'theme-text-secondary' : 'text-muted-foreground'
           }`}>
-            {t.projectsSubtitle}
+            A selection of my recent projects showcasing skills in Machine Learning, Data Science and NLP.
           </p>
         </div>
 
@@ -132,7 +145,7 @@ const ProjectsSection = () => {
                   >
                     <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                       <Github className="mr-2 h-4 w-4" />
-                      {t.projectButtonCode}
+                      View Code
                     </a>
                   </Button>
                   {project.demoUrl && (
@@ -143,7 +156,7 @@ const ProjectsSection = () => {
                     >
                       <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
                         <ExternalLink className="mr-2 h-4 w-4" />
-                        {t.projectButtonDemo}
+                        Live Demo
                       </a>
                     </Button>
                   )}
