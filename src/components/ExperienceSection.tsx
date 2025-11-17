@@ -84,31 +84,46 @@ const ExperienceSection = () => {
   const education: Education[] = [
     {
       type: 'education',
-      school: "École Centrale Paris",
-      degree: "Master Intelligence Artificielle et Big Data",
-      period: "2017 - 2019",
+      school: "ESGI - École Supérieure Génie Informatique",
+      degree: "Master Intelligence Artificielle & Big Data",
+      period: "2025 - 2027",
       location: "Paris, France",
       description: "Spécialisation en Machine Learning et Deep Learning. Projet de fin d'études sur l'analyse prédictive en finance.",
       achievements: [
         "Major de promotion (GPA: 18.5/20)",
-        "Thèse sur les réseaux de neurones adversaires",
-        "Stage de recherche au MIT (6 mois)"
+        "Projet sur les réseaux de neurones"
       ]
     },
     {
       type: 'education',
-      school: "Université Pierre et Marie Curie",
-      degree: "Licence en Mathématiques Appliquées",
-      period: "2014 - 2017",
+      school: "ESGI - École Supérieure Génie Informatique",
+      degree: "Bachelor en IA & Big Data",
+      period: "2024 - 2025",
       location: "Paris, France",
       description: "Formation solide en statistiques, probabilités et mathématiques pour l'ingénieur.",
       achievements: [
         "Mention Très Bien",
         "Spécialisation en statistiques avancées",
-        "Prix d'excellence en analyse numérique"
+      ]
+    }
+    ,{
+      type: 'education',
+      school: "Université des Sciences Montpellier",
+      degree: "Licence Mathematique - Informatique",
+      period: "2021 - 2023",
+      location: "Montpellier, France",
+      description: "Formation solide en programmation,statistiques, probabilités et mathématiques pour l'ingénieur.",
+      achievements: [
+        "Statistiques avancées",
+        "Logique Propositionele",
+        "Programmation"
+       
       ]
     }
   ];
+
+
+
 
   // Trie toutes les expériences et formations par année de fin décroissante
   const allItems: ExperienceItem[] = [...experiences, ...education].sort((a, b) => {
@@ -244,9 +259,9 @@ const ExperienceSection = () => {
 
                     {item.type === 'work' && (
                       <div className="flex flex-wrap gap-2 mt-2">
-                        {item.technologies.map((tech, techIndex) => (
+                        {item.technologies.map((item, techIndex) => (
                           <Badge key={techIndex} variant="secondary" className="theme-transition">
-                            {tech}
+                            {item}
                           </Badge>
                         ))}
                       </div>
