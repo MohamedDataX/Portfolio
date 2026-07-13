@@ -5,7 +5,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Section, SectionHeading } from '@/components/shared/Section';
 import Reveal from '@/components/shared/Reveal';
-import { socials } from '@/data/portfolio';
+import { socials, WEB3FORMS_KEY } from '@/data/portfolio';
 
 const contactLinks = [
   { icon: Mail, label: 'Email', value: socials.email, href: `mailto:${socials.email}` },
@@ -15,8 +15,12 @@ const contactLinks = [
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [botcheck, setBotcheck] = useState(''); // honeypot — must stay empty
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+
+  const web3formsEnabled =
+    Boolean(WEB3FORMS_KEY) && WEB3FORMS_KEY !== 'YOUR_ACCESS_KEY';
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -25,24 +29,63 @@ const ContactSection = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Static hosting (GitHub Pages) has no backend, so we open the visitor's
-  // mail client with the message pre-filled.
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
+  // mailto fallback (used until a Web3Forms key is configured).
+  const sendViaMailto = () => {
     const subject = encodeURIComponent(`Portfolio message from ${formData.name}`);
     const body = encodeURIComponent(
       `${formData.message}\n\n— ${formData.name} (${formData.email})`
     );
     window.location.href = `mailto:${socials.email}?subject=${subject}&body=${body}`;
-
     toast({
       title: 'Opening your mail app',
       description: `If nothing opens, email me at ${socials.email}.`,
     });
     setFormData({ name: '', email: '', message: '' });
-    setIsSubmitting(false);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (botcheck) return; // bot filled the honeypot — silently drop
+    setIsSubmitting(true);
+
+    if (!web3formsEnabled) {
+      sendViaMailto();
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `Portfolio message from ${formData.name}`,
+          from_name: 'Portfolio contact form',
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        toast({
+          title: 'Message sent',
+          description: 'Thanks for reaching out — I’ll reply within 24–48h.',
+        });
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        throw new Error(data.message || 'Request failed');
+      }
+    } catch {
+      toast({
+        title: 'Could not send',
+        description: `Please email me directly at ${socials.email}.`,
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -87,6 +130,17 @@ const ContactSection = () => {
             onSubmit={handleSubmit}
             className="space-y-4 rounded-2xl border border-border bg-card p-6"
           >
+            {/* Honeypot — hidden from humans, trips up bots */}
+            <input
+              type="checkbox"
+              name="botcheck"
+              tabIndex={-1}
+              autoComplete="off"
+              checked={Boolean(botcheck)}
+              onChange={(e) => setBotcheck(e.target.checked ? '1' : '')}
+              className="hidden"
+              aria-hidden="true"
+            />
             <div>
               <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-foreground">
                 Name
