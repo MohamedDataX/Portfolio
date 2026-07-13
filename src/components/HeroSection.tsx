@@ -1,174 +1,94 @@
-import { Download, ChevronDown } from 'lucide-react';
-import { useTheme } from '../context/ThemeContext.tsx';
-import CosmicBackground from '@/components/theme/CosmicBackground';
-import { useLanguage } from '../context/LanguageContext';
-import translations from "@/lib/i18n";
-import { useState, useEffect } from 'react';
+import { ArrowUpRight, Download } from 'lucide-react';
+import { profile } from '@/data/portfolio';
+import { cn } from '@/lib/utils';
+
+const scrollTo = (id: string) => {
+  const el = document.getElementById(id);
+  if (el) window.scrollTo({ top: id === 'home' ? 0 : el.offsetTop - 72, behavior: 'smooth' });
+};
 
 const HeroSection = () => {
-  const { isDarkMode } = useTheme();
-  const { language } = useLanguage();
-  const t = translations[language];
-
-  const [showScrollIndicator, setShowScrollIndicator] = useState(true);
-
-  const scrollToAbout = () => {
-    const element = document.getElementById('apropos');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setShowScrollIndicator(false);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <section
-      id="accueil"
-      className={`min-h-screen relative overflow-hidden font-mono theme-transition pt-16 ${
-        isDarkMode ? 'theme-bg-dark' : 'theme-bg-light'
-      }`}
+      id="home"
+      className="relative flex min-h-screen items-center overflow-hidden pt-16"
     >
-      <CosmicBackground />
+      {/* Subtle single-accent glow — no cosmic clutter */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-1/4 right-0 h-[60vh] w-[60vh] rounded-full bg-primary/10 blur-[120px]"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.015] [background-image:linear-gradient(hsl(var(--foreground))_1px,transparent_1px),linear-gradient(90deg,hsl(var(--foreground))_1px,transparent_1px)] [background-size:64px_64px]"
+      />
 
-      <div className="relative z-10 min-h-[calc(100vh-4rem)] flex flex-col justify-center py-8">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div className="mx-auto w-full max-w-6xl px-6 lg:px-8">
+        <div className="max-w-3xl">
+          <div className="animate-fade-in">
+            <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 font-mono text-xs text-muted-foreground">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+              Available for opportunities · {profile.location}
+            </p>
+          </div>
 
-            {/* Left column */}
-            <div className="lg:col-span-8 space-y-12">
-              <div className="space-y-6">
-                {/* Profil avec ombre et effet glow */}
-                <div
-                  className={`w-24 h-24 rounded-full border-2 shadow-lg theme-transition transition-transform duration-500 hover:scale-105 ${
-                    isDarkMode
-                      ? 'bg-gradient-to-br from-zinc-700 to-zinc-900 border-zinc-500 shadow-zinc-800'
-                      : 'bg-gradient-to-br from-gray-200 to-gray-400 border-gray-300 shadow-gray-400'
-                  }`}
-                />
+          <h1
+            className="animate-fade-in text-4xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-7xl"
+            style={{ animationDelay: '80ms' }}
+          >
+            {profile.name}
+          </h1>
 
-                {/* Nom & titre */}
-                <div className="space-y-2">
-                  <h1 className="text-4xl sm:text-5xl font-light leading-tight theme-text-primary">
-                    Mohamed Ait Sidi Hou
-                  </h1>
-                  <h2 className="text-2xl sm:text-3xl font-light theme-text-secondary">
-                    {t.dataScientist}
-                  </h2>
-                  <p className="text-sm font-light tracking-widest theme-text-muted">
-                    {t.basedInParis}
-                  </p>
-                </div>
-              </div>
+          <div
+            className="animate-fade-in mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-xl font-light text-muted-foreground sm:text-2xl"
+            style={{ animationDelay: '160ms' }}
+          >
+            {profile.roles.map((role, i) => (
+              <span key={role} className="inline-flex items-center gap-3">
+                {i > 0 && <span className="text-primary">/</span>}
+                <span>{role}</span>
+              </span>
+            ))}
+          </div>
 
-              {/* Mission */}
-              <div className="max-w-2xl">
-                <div className="text-lg sm:text-xl leading-relaxed font-light space-y-4 theme-text-secondary">
-                  <p dangerouslySetInnerHTML={{ __html: t.missionPart1 }} />
-                  <p dangerouslySetInnerHTML={{ __html: t.missionPart2 }} />
-                  <p dangerouslySetInnerHTML={{ __html: t.missionPart3 }} />
-                </div>
-              </div>
+          <p
+            className="animate-fade-in mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground"
+            style={{ animationDelay: '240ms' }}
+          >
+            {profile.tagline}
+          </p>
 
-              {/* Boutons */}
-              <div className="space-y-6">
-                <div className="flex flex-col sm:flex-row gap-4 sm:gap-8">
-                  <button
-                    className={`group flex items-center font-light tracking-wide px-4 py-2 rounded-lg transition-all duration-300 ${
-                      isDarkMode
-                        ? 'bg-zinc-800 text-zinc-300 hover:bg-zinc-700'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }`}
-                  >
-                    <Download className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-300" />
-                    <span>{t.curriculumVitae}</span>
-                  </button>
+          <div
+            className="animate-fade-in mt-10 flex flex-wrap items-center gap-4"
+            style={{ animationDelay: '320ms' }}
+          >
+            <button
+              onClick={() => scrollTo('projects')}
+              className={cn(
+                'group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground',
+                'transition-transform duration-200 hover:-translate-y-0.5'
+              )}
+            >
+              View my projects
+              <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </button>
 
-                  <button
-                    onClick={scrollToAbout}
-                    className={`group flex items-center font-light tracking-wide px-4 py-2 rounded-lg transition-all duration-300 ${
-                      isDarkMode
-                        ? 'bg-zinc-800 text-zinc-300 hover:bg-zinc-700'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }`}
-                  >
-                    <div
-                      className={`w-2 h-2 rounded-full mr-3 theme-transition ${
-                        isDarkMode
-                          ? 'bg-zinc-400 group-hover:bg-white'
-                          : 'bg-gray-600 group-hover:bg-gray-900'
-                      }`}
-                    />
-                    <span>{t.aboutProjects}</span>
-                  </button>
+            <button
+              onClick={() => scrollTo('contact')}
+              className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+            >
+              Get in touch
+            </button>
 
-                  <button
-                    onClick={scrollToContact}
-                    className={`group flex items-center font-light tracking-wide px-4 py-2 rounded-lg transition-all duration-300 ${
-                      isDarkMode
-                        ? 'bg-zinc-800 text-zinc-300 hover:bg-zinc-700'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }`}
-                  >
-                    <div
-                      className={`w-2 h-2 rounded-full mr-3 theme-transition ${
-                        isDarkMode
-                          ? 'bg-zinc-400 group-hover:bg-white'
-                          : 'bg-gray-600 group-hover:bg-gray-900'
-                      }`}
-                    />
-                    <span>{t.contact}</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Right column */}
-            <div className="lg:col-span-4 flex flex-col justify-between h-full min-h-[400px]">
-              <div className="text-right space-y-2 mt-auto">
-                <p className="text-sm font-light theme-text-secondary">
-                  {t.dataScientist}
-                </p>
-                <p className="text-xs font-light theme-text-muted">
-                  Paris, France <br />
-                  © 2025
-                </p>
-              </div>
-            </div>
+            <a
+              href={profile.cvUrl}
+              className="inline-flex items-center gap-2 px-2 py-3 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <Download className="h-4 w-4" />
+              Résumé
+            </a>
           </div>
         </div>
-
-        {/* Scroll Indicator amélioré */}
-        {showScrollIndicator && (
-          <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-20">
-            <button
-              onClick={scrollToAbout}
-              aria-label={t.apropos}
-              title={t.apropos}
-              className={`group p-4 rounded-full shadow-lg border transition-all duration-500 animate-bounce ${
-                isDarkMode
-                  ? 'bg-gradient-to-br from-zinc-700 to-zinc-900 text-zinc-300 hover:from-zinc-600 hover:to-zinc-800 border-zinc-600'
-                  : 'bg-gradient-to-br from-white to-gray-200 text-gray-600 hover:from-gray-100 hover:to-gray-300 border-gray-300'
-              }`}
-            >
-              <ChevronDown className="w-6 h-6 group-hover:translate-y-1 transition-transform duration-300" />
-            </button>
-          </div>
-        )}
       </div>
     </section>
   );

@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Claude Code local skills / settings
+.claude
+src/.claude
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

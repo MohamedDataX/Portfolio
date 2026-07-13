@@ -66,14 +66,11 @@ export default {
 			},
 			fontFamily: {
 				sans: ['Inter', 'system-ui', 'sans-serif'],
-				japanese: ['"IBM Plex Mono"', 'monospace'],
+				mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
 			},
 			boxShadow: {
-				'card': 'var(--card-shadow)',
-				'card-hover': 'var(--card-shadow-hover)',
-			},
-			backgroundImage: {
-				'hero-gradient': 'var(--hero-gradient)',
+				'card': '0 1px 2px hsl(240 6% 10% / 0.04), 0 4px 16px hsl(240 6% 10% / 0.04)',
+				'card-hover': '0 2px 4px hsl(240 6% 10% / 0.06), 0 12px 32px hsl(240 6% 10% / 0.08)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
