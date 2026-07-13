@@ -80,13 +80,13 @@ const HeroSection = () => {
               Get in touch
             </button>
 
-            <a
-              href={profile.cvUrl}
+            <button
+              onClick={() => scrollTo('contact')}
               className="inline-flex items-center gap-2 px-2 py-3 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               <Download className="h-4 w-4" />
               Résumé
-            </a>
+            </button>
           </div>
         </div>
       </div>
