@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://mohamedatax.github.io/Portfolio/sitemap.xml
+Sitemap: https://mohameddatax.github.io/Portfolio/sitemap.xml
