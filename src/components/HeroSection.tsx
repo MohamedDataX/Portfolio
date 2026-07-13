@@ -16,11 +16,11 @@ const HeroSection = () => {
       {/* Subtle single-accent glow — no cosmic clutter */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-1/4 right-0 h-[60vh] w-[60vh] rounded-full bg-primary/10 blur-[120px]"
+        className="pointer-events-none absolute -top-1/4 right-0 h-[60vh] w-[60vh] rounded-full bg-primary/15 blur-[120px]"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.015] [background-image:linear-gradient(hsl(var(--foreground))_1px,transparent_1px),linear-gradient(90deg,hsl(var(--foreground))_1px,transparent_1px)] [background-size:64px_64px]"
+        className="pointer-events-none absolute inset-0 opacity-[0.03] [background-image:linear-gradient(hsl(var(--foreground))_1px,transparent_1px),linear-gradient(90deg,hsl(var(--foreground))_1px,transparent_1px)] [background-size:64px_64px]"
       />
 
       <div className="mx-auto w-full max-w-6xl px-6 lg:px-8">
