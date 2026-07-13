@@ -16,6 +16,7 @@ import { asset } from '@/lib/asset';
 export const profile = {
   name: 'Mohamed Ait Sidi Hou',
   roles: ['Data Scientist', 'Data Engineer'],
+  heroTitle: 'Data & AI Engineer',
   location: 'Paris, France',
   tagline:
     'I build scalable data pipelines and AI systems that turn complex data into real business value · from data engineering to machine learning in production.',
