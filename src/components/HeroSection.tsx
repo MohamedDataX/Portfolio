@@ -13,14 +13,14 @@ const HeroSection = () => {
       id="home"
       className="relative flex min-h-screen items-center overflow-hidden pt-16"
     >
-      {/* Subtle single-accent glow — no cosmic clutter */}
+      {/* Subtle single-accent glow — brighter in dark for visibility */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-1/4 right-0 h-[60vh] w-[60vh] rounded-full bg-primary/15 blur-[120px]"
+        className="pointer-events-none absolute -top-1/4 right-0 h-[60vh] w-[60vh] rounded-full bg-primary/15 blur-[120px] dark:bg-primary/25"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.04] [background-image:linear-gradient(hsl(var(--foreground))_1px,transparent_1px),linear-gradient(90deg,hsl(var(--foreground))_1px,transparent_1px)] [background-size:64px_64px]"
+        className="pointer-events-none absolute inset-0 opacity-[0.06] dark:opacity-[0.1] [background-image:linear-gradient(hsl(var(--foreground))_1px,transparent_1px),linear-gradient(90deg,hsl(var(--foreground))_1px,transparent_1px)] [background-size:64px_64px]"
       />
 
       <div className="mx-auto w-full max-w-6xl px-6 lg:px-8">
