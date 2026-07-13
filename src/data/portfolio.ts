@@ -25,11 +25,11 @@ export const profile = {
     'I combine strong technical skills with a functional, product-minded approach — turning data into actionable, high-value solutions while staying current with the latest advances in the field.',
   ],
   cvUrl: asset('cv.pdf'), // TODO: drop your CV PDF in /public as cv.pdf
-  email: 'aitsidihoum@gmail.com',
+  email: 'aitsidihoumohamed@protonmail.com',
 };
 
 export const socials = {
-  email: 'aitsidihoum@gmail.com',
+  email: 'aitsidihoumohamed@protonmail.com',
   linkedin: 'https://www.linkedin.com/in/mohamed-ash/',
   github: 'https://github.com/MohamedDataX',
 };
