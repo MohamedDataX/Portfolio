@@ -1,7 +1,6 @@
 import { ArrowUpRight, Download } from 'lucide-react';
 import { profile } from '@/data/portfolio';
 import { cn } from '@/lib/utils';
-import HeroCanvas from '@/components/HeroCanvas';
 
 const scrollTo = (id: string) => {
   const el = document.getElementById(id);
@@ -14,15 +13,17 @@ const HeroSection = () => {
       id="home"
       className="relative flex min-h-screen items-center overflow-hidden pt-16"
     >
-      {/* Animated GLSL shader background (raw WebGL, no dependency) */}
-      <HeroCanvas />
-      {/* Faint grid overlay keeps the structured, data-driven identity */}
+      {/* Subtle single-accent glow — no cosmic clutter */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.03] [background-image:linear-gradient(hsl(var(--foreground))_1px,transparent_1px),linear-gradient(90deg,hsl(var(--foreground))_1px,transparent_1px)] [background-size:64px_64px]"
+        className="pointer-events-none absolute -top-1/4 right-0 h-[60vh] w-[60vh] rounded-full bg-primary/15 blur-[120px]"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.04] [background-image:linear-gradient(hsl(var(--foreground))_1px,transparent_1px),linear-gradient(90deg,hsl(var(--foreground))_1px,transparent_1px)] [background-size:64px_64px]"
       />
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-6xl px-6 lg:px-8">
         <div className="max-w-3xl">
           <div className="animate-fade-in">
             <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 font-mono text-xs text-muted-foreground">
