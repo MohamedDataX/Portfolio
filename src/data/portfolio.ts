@@ -34,10 +34,10 @@ export const socials = {
   github: 'https://github.com/MohamedDataX',
 };
 
-// Web3Forms access key (public by design — tied to the destination inbox).
-// Get one free at https://web3forms.com using aitsidihoumohamed@protonmail.com.
-// While left as the placeholder, the form falls back to mailto.
-export const WEB3FORMS_KEY: string = 'd018e447-501a-4636-a00e-f3d54e4b91bb';
+// Web3Forms access key — injected at build from the VITE_WEB3FORMS_KEY
+// GitHub Actions secret (public by design, tied to the destination inbox).
+// For local dev, set it in .env.local. Empty -> the form falls back to mailto.
+export const WEB3FORMS_KEY: string = import.meta.env.VITE_WEB3FORMS_KEY ?? '';
 
 export const navItems = [
   { id: 'home', label: 'Home' },
