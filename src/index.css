@@ -44,20 +44,20 @@
   }
 
   .dark {
-    --background: 240 6% 5%;          /* near-black ink, not cosmic */
-    --foreground: 0 0% 98%;
+    --background: 240 6% 7%;          /* near-black ink, slightly lifted */
+    --foreground: 0 0% 99%;
 
-    --card: 240 5% 8%;
-    --card-foreground: 0 0% 98%;
+    --card: 240 5% 12%;               /* lighter cards -> more legible */
+    --card-foreground: 0 0% 99%;
 
-    --popover: 240 5% 8%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 240 5% 12%;
+    --popover-foreground: 0 0% 99%;
 
-    --muted: 240 4% 13%;
-    --muted-foreground: 240 5% 65%;
+    --muted: 240 4% 17%;
+    --muted-foreground: 240 6% 74%;  /* brighter secondary text */
 
-    --secondary: 240 4% 13%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 240 4% 17%;
+    --secondary-foreground: 0 0% 99%;
 
     --primary: 217 91% 60%;          /* brighter blue on dark */
     --primary-foreground: 240 6% 5%;
@@ -68,8 +68,8 @@
     --destructive: 0 62% 45%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 4% 16%;
-    --input: 240 4% 16%;
+    --border: 240 5% 24%;            /* more visible edges on components */
+    --input: 240 5% 24%;
     --ring: 217 91% 60%;
   }
 }
