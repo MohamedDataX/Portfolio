@@ -16,7 +16,7 @@ const Footer = () => (
           <span className="text-primary">.</span>
         </p>
         <p className="mt-1 text-xs text-muted-foreground">
-          {profile.roles.join(' · ')} — {profile.location}
+          {profile.roles.join(' · ')} · {profile.location}
         </p>
       </div>
 

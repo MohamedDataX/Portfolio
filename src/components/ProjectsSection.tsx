@@ -9,7 +9,7 @@ const ProjectsSection = () => {
       <SectionHeading
         eyebrow="Selected work"
         title="Projects"
-        description="Production data & AI systems — from modelling to deployment, focused on measurable impact."
+        description="Production data and AI systems · from data engineering to machine-learning deployment, focused on measurable business impact."
       />
 
       <div className="grid gap-6 md:grid-cols-2">

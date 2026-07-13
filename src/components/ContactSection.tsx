@@ -33,7 +33,7 @@ const ContactSection = () => {
   const sendViaMailto = () => {
     const subject = encodeURIComponent(`Portfolio message from ${formData.name}`);
     const body = encodeURIComponent(
-      `${formData.message}\n\n— ${formData.name} (${formData.email})`
+      `${formData.message}\n\n· ${formData.name} (${formData.email})`
     );
     window.location.href = `mailto:${socials.email}?subject=${subject}&body=${body}`;
     toast({
@@ -71,7 +71,8 @@ const ContactSection = () => {
       if (data.success) {
         toast({
           title: 'Message sent',
-          description: 'Thanks for reaching out — I’ll reply within 24–48h.',
+          description:
+            'Thank you for your message! I’ll get back to you as soon as possible, usually within 24 hours.',
         });
         setFormData({ name: '', email: '', message: '' });
       } else {
@@ -120,7 +121,7 @@ const ContactSection = () => {
           <div className="rounded-xl border border-border bg-card p-4">
             <p className="text-sm font-medium text-foreground">Availability</p>
             <p className="mt-1 text-sm text-muted-foreground">
-              Currently on an apprenticeship. Typical response time: 24–48h.
+              Open to new opportunities and collaborations. Typical response time: Under 24 hours.
             </p>
           </div>
         </Reveal>
