@@ -1,6 +1,6 @@
 /**
  * Single source of truth for all portfolio content.
- * Edit here — every section reads from this file.
+ * Edit here · every section reads from this file.
  */
 import {
   Code2,
@@ -18,11 +18,10 @@ export const profile = {
   roles: ['Data Scientist', 'Data Engineer'],
   location: 'Paris, France',
   tagline:
-    'I turn raw data into production-grade AI systems — from modelling to deployment, with measurable business impact.',
+    'I build scalable data pipelines and AI systems that turn complex data into real business value · from data engineering to machine learning in production.',
   intro: [
-    'Data Scientist & Data Engineer focused on unlocking the value of data through hands-on machine learning and robust data pipelines.',
-    'After a data-development internship and a first role as a Data Consultant, I joined Groupe La Poste on a two-year apprenticeship as a Data Scientist, alongside my Master’s in AI & Big Data.',
-    'I combine strong technical skills with a functional, product-minded approach — turning data into actionable, high-value solutions while staying current with the latest advances in the field.',
+    'Data Scientist, Data Engineer and AI Engineer based in Paris. I design and ship scalable data platforms and machine-learning systems that run in production, pairing solid engineering with a clear focus on business value.',
+    'Beyond the code, I’m genuinely passionate about technology and AI, fascinated by aerospace and aviation, and never far from sport. I love discovering new cultures and stay endlessly curious · always learning something new.',
   ],
   cvUrl: asset('cv.pdf'), // TODO: drop your CV PDF in /public as cv.pdf
   email: 'aitsidihoumohamed@protonmail.com',
@@ -34,7 +33,7 @@ export const socials = {
   github: 'https://github.com/MohamedDataX',
 };
 
-// Web3Forms access key — injected at build from the VITE_WEB3FORMS_KEY
+// Web3Forms access key · injected at build from the VITE_WEB3FORMS_KEY
 // GitHub Actions secret (public by design, tied to the destination inbox).
 // For local dev, set it in .env.local. Empty -> the form falls back to mailto.
 export const WEB3FORMS_KEY: string = import.meta.env.VITE_WEB3FORMS_KEY ?? '';
@@ -56,34 +55,41 @@ export interface SkillCategory {
 
 export const skillCategories: SkillCategory[] = [
   {
-    icon: Code2,
-    title: 'Languages & Tools',
-    skills: ['Python', 'SQL', 'R', 'Java', 'Git', 'Docker'],
-  },
-  {
     icon: Database,
     title: 'Data Engineering',
-    skills: ['PySpark', 'Pandas', 'Airflow', 'SSIS', 'PostgreSQL', 'MongoDB'],
+    skills: ['Apache Spark', 'PySpark', 'Databricks', 'SQL', 'Airflow', 'SSIS'],
   },
   {
     icon: Brain,
     title: 'Machine Learning & AI',
-    skills: ['Scikit-learn', 'PyTorch', 'TensorFlow', 'Hugging Face', 'XGBoost'],
-  },
-  {
-    icon: BarChart3,
-    title: 'Visualization',
-    skills: ['Power BI', 'Tableau', 'Plotly', 'Streamlit', 'Matplotlib'],
-  },
-  {
-    icon: Cloud,
-    title: 'Cloud & Platforms',
-    skills: ['Azure', 'GCP', 'Microsoft Fabric', 'Dataiku DSS'],
+    skills: ['Python', 'Scikit-learn', 'PyTorch', 'TensorFlow', 'Hugging Face', 'XGBoost'],
   },
   {
     icon: GitBranch,
     title: 'MLOps',
-    skills: ['MLflow', 'CI/CD (CML)', 'Docker', 'Model Deployment'],
+    skills: ['MLflow', 'Docker', 'Git', 'CI/CD', 'Model Deployment'],
+  },
+  {
+    icon: Cloud,
+    title: 'Cloud & Platforms',
+    skills: [
+      'Microsoft Azure',
+      'AWS',
+      'Google Cloud Platform',
+      'Databricks',
+      'Microsoft Fabric',
+      'Dataiku',
+    ],
+  },
+  {
+    icon: BarChart3,
+    title: 'Visualization',
+    skills: ['Power BI', 'Tableau', 'Plotly', 'Streamlit'],
+  },
+  {
+    icon: Code2,
+    title: 'Languages & Tools',
+    skills: ['Python', 'SQL', 'Git', 'Docker', 'Bash'],
   },
 ];
 
@@ -175,7 +181,7 @@ export const experiences: Experience[] = [
   {
     company: 'La Poste Groupe',
     role: 'Data Scientist',
-    period: 'Sep 2025 — Present',
+    period: 'Sep 2025 · Present',
     location: 'Paris, France',
     description: 'Building advanced AI solutions within the Data/AI hub.',
     achievements: [
@@ -189,7 +195,7 @@ export const experiences: Experience[] = [
   {
     company: 'Actinvision',
     role: 'Data Consultant',
-    period: 'Sep 2024 — Sep 2025',
+    period: 'Sep 2024 · Sep 2025',
     location: 'Strasbourg, France',
     description: 'Data consulting for clients across a range of industries.',
     achievements: [
@@ -204,7 +210,7 @@ export const experiences: Experience[] = [
   {
     company: 'Azura Group',
     role: 'Data Developer',
-    period: 'Jun 2024 — Sep 2024',
+    period: 'Jun 2024 · Sep 2024',
     location: 'Perpignan, France',
     description: 'Full-stack data development within the group’s data team.',
     achievements: [
@@ -232,8 +238,8 @@ export interface Education {
 export const education: Education[] = [
   {
     school: 'ESGI',
-    degree: 'Master — AI & Big Data',
-    period: '2025 — 2027',
+    degree: 'Master · AI & Big Data',
+    period: '2025 · 2027',
     location: 'Paris, France',
     description: 'Deep learning, advanced ML and distributed systems.',
     achievements: ['With honours', 'Thesis on financial prediction'],
@@ -242,8 +248,8 @@ export const education: Education[] = [
   },
   {
     school: 'ESGI',
-    degree: 'Bachelor — AI & Big Data',
-    period: '2024 — 2025',
+    degree: 'Bachelor · AI & Big Data',
+    period: '2024 · 2025',
     location: 'Paris, France',
     description: 'Statistics, data engineering and applied AI.',
     achievements: ['With honours', 'Top of class in Mathematics'],
@@ -252,8 +258,8 @@ export const education: Education[] = [
   },
   {
     school: 'Université de Montpellier',
-    degree: 'BSc — Mathematics & Computer Science',
-    period: '2021 — 2023',
+    degree: 'BSc · Mathematics & Computer Science',
+    period: '2021 · 2023',
     location: 'Montpellier, France',
     description: 'Applied mathematics, programming and statistics.',
     achievements: ['Advanced statistics', 'Python & C programming'],

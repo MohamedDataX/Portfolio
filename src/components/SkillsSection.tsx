@@ -8,7 +8,7 @@ const SkillsSection = () => {
       <SectionHeading
         eyebrow="Toolbox"
         title="Skills & technologies"
-        description="A full-stack data profile — from engineering pipelines to shipping ML models in production."
+        description="The stack I work with day to day · including Databricks, Apache Spark, PySpark, MLflow and Azure, used in production during my work at Groupe La Poste."
       />
 
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
