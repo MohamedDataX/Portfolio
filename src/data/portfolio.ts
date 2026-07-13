@@ -37,7 +37,7 @@ export const socials = {
 // Web3Forms access key (public by design — tied to the destination inbox).
 // Get one free at https://web3forms.com using aitsidihoumohamed@protonmail.com.
 // While left as the placeholder, the form falls back to mailto.
-export const WEB3FORMS_KEY = 'd018e447-501a-4636-a00e-f3d54e4b91bb';
+export const WEB3FORMS_KEY: string = 'd018e447-501a-4636-a00e-f3d54e4b91bb';
 
 export const navItems = [
   { id: 'home', label: 'Home' },
