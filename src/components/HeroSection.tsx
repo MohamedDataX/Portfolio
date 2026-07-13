@@ -43,10 +43,10 @@ const HeroSection = () => {
             className="animate-fade-in mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-xl font-light text-muted-foreground sm:text-2xl"
             style={{ animationDelay: '160ms' }}
           >
-            {profile.roles.map((role, i) => (
-              <span key={role} className="inline-flex items-center gap-3">
-                {i > 0 && <span className="text-primary">/</span>}
-                <span>{role}</span>
+            {profile.heroTitle.split('&').map((part, i) => (
+              <span key={part} className="inline-flex items-center gap-3">
+                {i > 0 && <span className="text-primary">&</span>}
+                <span>{part.trim()}</span>
               </span>
             ))}
           </div>
