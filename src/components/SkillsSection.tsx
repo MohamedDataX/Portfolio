@@ -1,135 +1,59 @@
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent } from '@/components/ui/card';
-import { Code, Database, Brain, BarChart3 } from 'lucide-react';
-import { useTheme } from '../context/ThemeContext.tsx';
-import CosmicBackground from '@/components/theme/CosmicBackground';
+import { Section, SectionHeading } from '@/components/shared/Section';
+import Reveal from '@/components/shared/Reveal';
+import { skillCategories, specializations } from '@/data/portfolio';
 
 const SkillsSection = () => {
-  const { isDarkMode } = useTheme();
-
-  const skillCategories = [
-    {
-      icon: Code,
-      title: "Programming & Tools",
-      color: "bg-blue-500/10 text-blue-600",
-      skills: ["Python", "SQL", "R", "Java", "Git", "Docker", "Azure", "GCP"]
-    },
-    {
-      icon: Database,
-      title: "Data Engineering",
-      color: "bg-green-500/10 text-green-600",
-      skills: ["PySpark", "Pandas", "NumPy", "Airflow", "MongoDB", "PostgreSQL","SSMS", "SSIS"]
-    },
-    {
-      icon: Brain,
-      title: "Machine Learning & AI",
-      color: "bg-purple-500/10 text-purple-600",
-      skills: ["Scikit-learn", "PyTorch", "TensorFlow", "Keras", "XGBoost"]
-    },
-    {
-      icon: BarChart3,
-      title: "Data Visualization",
-      color: "bg-orange-500/10 text-orange-600",
-      skills: ["Matplotlib", "Seaborn", "Plotly", "Streamlit", "Tableau", "Power BI"]
-    }
-  ];
-
-  const specializations = [
-    "Natural Language Processing (NLP)",
-    "Computer Vision",
-    "Time Series Forecasting",
-    "Recommender Systems",
-    "MLOps & Model Deployment",
-    "Statistical Modeling",
-    "Deep Learning Architectures",
-    "Cloud",
-    "ETL/ELT"
-  ];
-
   return (
-    <section id="skills" className={`py-20 relative overflow-hidden theme-transition ${
-      isDarkMode ? 'theme-bg-dark' : 'theme-bg-light'
-    }`}>
-      <CosmicBackground />
+    <Section id="skills" className="bg-muted/30">
+      <SectionHeading
+        eyebrow="Toolbox"
+        title="Skills & technologies"
+        description="A full-stack data profile — from engineering pipelines to shipping ML models in production."
+      />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 font-mono font-light tracking-wider leading-relaxed">
-        <div className="text-center mb-16">
-          <h2 className={`text-3xl sm:text-4xl mb-4 theme-transition ${
-            isDarkMode ? 'theme-text-primary' : 'text-foreground'
-          }`}>
-            Technical Skills
-          </h2>
-          <div className="w-20 h-1 bg-primary mx-auto rounded"></div>
-        </div>
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {skillCategories.map((cat, i) => (
+          <Reveal key={cat.title} delay={i * 60}>
+            <div className="h-full rounded-2xl border border-border bg-card p-6 transition-colors duration-300 hover:border-primary/30">
+              <div className="mb-4 flex items-center gap-3">
+                <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <cat.icon className="h-[18px] w-[18px]" />
+                </span>
+                <h3 className="text-base font-semibold text-foreground">
+                  {cat.title}
+                </h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {cat.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-md bg-muted px-2.5 py-1 font-mono text-xs text-muted-foreground"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        ))}
+      </div>
 
-        {/* Technical Skills Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {skillCategories.map((category, index) => (
-            <Card
-              key={index}
-              className={`p-6 hover:shadow-card-hover transition-all duration-300 hover:scale-105 animate-fade-in theme-transition ${
-                isDarkMode 
-                  ? 'bg-zinc-900/60 border-zinc-700 backdrop-blur-sm' 
-                  : ''
-              }`}
-              style={{ animationDelay: `${index * 0.1}s` }}
+      <Reveal className="mt-12">
+        <p className="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+          Specializations
+        </p>
+        <div className="flex flex-wrap gap-2.5">
+          {specializations.map((spec) => (
+            <span
+              key={spec}
+              className="rounded-full border border-border px-4 py-1.5 text-sm text-foreground/80 transition-colors hover:border-primary/40 hover:text-foreground"
             >
-              <CardContent className="p-0">
-                <div className="text-center mb-4">
-                  <div className={`inline-flex p-3 rounded-lg ${category.color} mb-3`}>
-                    <category.icon className="h-6 w-6" />
-                  </div>
-                  <h3 className={`theme-transition ${
-                    isDarkMode ? 'theme-text-primary' : 'text-foreground'
-                  }`}>
-                    {category.title}
-                  </h3>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill, skillIndex) => (
-                    <Badge
-                      key={skillIndex}
-                      variant="secondary"
-                      className={`text-xs theme-transition ${
-                        isDarkMode 
-                          ? 'bg-zinc-800/70 text-zinc-300 hover:bg-zinc-700' 
-                          : ''
-                      }`}
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+              {spec}
+            </span>
           ))}
         </div>
-
-        {/* Specializations */}
-        <div className="animate-slide-in-right">
-          <h3 className={`text-2xl text-center mb-8 theme-transition ${
-            isDarkMode ? 'theme-text-primary' : 'text-foreground'
-          }`}>
-            Specializations
-          </h3>
-          <div className="flex flex-wrap justify-center gap-3">
-            {specializations.map((spec, index) => (
-              <Badge
-                key={index}
-                variant="outline"
-                className={`px-4 py-2 text-sm hover:bg-primary hover:text-primary-foreground transition-colors cursor-default theme-transition ${
-                  isDarkMode 
-                    ? 'border-zinc-600 text-zinc-300 hover:border-primary' 
-                    : ''
-                }`}
-              >
-                {spec}
-              </Badge>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
+      </Reveal>
+    </Section>
   );
 };
 

@@ -21,32 +21,21 @@ interface ThemeProviderProps {
 }
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  // Light by default (premium off-white). Overridden by saved choice below.
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Charger le thème depuis localStorage au démarrage
+  // Load saved theme; fall back to light (no system-dark auto-switch).
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
       setIsDarkMode(savedTheme === 'dark');
-    } else {
-      // Utiliser la préférence système par défaut
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setIsDarkMode(prefersDark);
     }
   }, []);
 
-  // Sauvegarder le thème et appliquer les classes CSS
+  // Persist + toggle the `dark` class on <html> (shadcn/Tailwind convention).
   useEffect(() => {
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-    
-    // Appliquer la classe au body pour les styles globaux
-    if (isDarkMode) {
-      document.body.classList.add('dark-theme');
-      document.body.classList.remove('light-theme');
-    } else {
-      document.body.classList.add('light-theme');
-      document.body.classList.remove('dark-theme');
-    }
+    document.documentElement.classList.toggle('dark', isDarkMode);
   }, [isDarkMode]);
 
   const toggleTheme = () => {
