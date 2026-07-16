@@ -1,0 +1,100 @@
+---
+title: "C'est quoi le clustering ? Le guide simple pour débutants"
+description: "Le clustering (ou partitionnement) regroupe automatiquement des données similaires sans étiquettes. Définition, intuition, exemples concrets et algorithmes clés expliqués simplement."
+date: "2026-05-12"
+updated: "2026-07-10"
+category: "Machine Learning"
+tags: ["Clustering", "Machine Learning", "Non supervisé", "Data Science"]
+author: "Mohamed Ait Sidi Hou"
+---
+
+Le **clustering** — ou *partitionnement* en français — est l'une des techniques
+les plus utiles du machine learning non supervisé. En une phrase : il consiste à
+**regrouper automatiquement des données qui se ressemblent**, sans jamais avoir
+dit à la machine à quoi ressemblent les groupes.
+
+## Définition du clustering
+
+Le clustering est une méthode d'apprentissage **non supervisé** : on fournit des
+données *sans étiquettes*, et l'algorithme découvre lui-même une structure en
+formant des groupes homogènes appelés **clusters**.
+
+> Un bon cluster regroupe des points très **similaires entre eux** et très
+> **différents** des points des autres clusters.
+
+C'est la grande différence avec la classification, qui apprend à partir
+d'exemples déjà étiquetés. Si ce point vous intéresse, j'y consacre un article
+entier : [différence entre classification et clustering](/blog/difference-classification-clustering).
+
+## Une intuition simple
+
+Imaginez une table couverte de pièces de Lego mélangées. Sans consigne, vous
+allez naturellement les trier — par couleur, par taille, par forme. Vous venez
+de faire du clustering : créer des groupes cohérents à partir de ressemblances,
+sans qu'on vous ait donné la « bonne » réponse à l'avance.
+
+<Callout type="tip">
+  Le clustering ne cherche pas *la* vérité : il propose une organisation utile
+  des données. Deux découpages différents peuvent tous les deux être pertinents.
+</Callout>
+
+## À quoi ça sert concrètement ?
+
+Le clustering est partout dès qu'il faut **segmenter** ou **explorer** des données :
+
+- **Segmentation client** : regrouper les clients par comportement d'achat.
+- **Systèmes de recommandation** : rapprocher des utilisateurs aux goûts proches.
+- **Détection d'anomalies** : un point isolé loin de tout cluster est suspect.
+- **Compression d'images** : réduire une image à quelques couleurs dominantes.
+- **Analyse exploratoire** : comprendre un jeu de données inconnu.
+
+## Les grandes familles d'algorithmes
+
+| Famille        | Exemple      | Idée principale                              |
+| -------------- | ------------ | -------------------------------------------- |
+| Centroïdes     | K-Means      | Chaque cluster tourne autour d'un centre     |
+| Hiérarchique   | Agglomératif | On fusionne les points de proche en proche   |
+| Densité        | DBSCAN       | Un cluster = une zone dense de points        |
+| Distribution   | GMM          | Chaque cluster suit une loi de probabilité   |
+
+Le plus connu — et le meilleur point de départ — reste **K-Means**. Je détaille
+son fonctionnement pas à pas ici :
+[comment fonctionne K-Means](/blog/comment-fonctionne-k-means).
+
+## Un premier exemple en Python
+
+Avec `scikit-learn`, quelques lignes suffisent pour créer des clusters :
+
+```python
+from sklearn.cluster import KMeans
+from sklearn.datasets import make_blobs
+
+# Données synthétiques : 3 groupes de points
+X, _ = make_blobs(n_samples=300, centers=3, random_state=42)
+
+# On demande au modèle de trouver 3 clusters
+model = KMeans(n_clusters=3, n_init="auto", random_state=42)
+labels = model.fit_predict(X)
+
+print(labels[:10])  # l'étiquette de cluster de chaque point
+```
+
+En sortie, chaque point reçoit un **numéro de cluster** (0, 1 ou 2) : l'algorithme
+a organisé les données tout seul.
+
+## Comment savoir si le clustering est « bon » ?
+
+Sans étiquettes de référence, on évalue la **qualité interne** des groupes :
+
+- Le **score de silhouette** mesure si les points sont bien dans leur cluster.
+- La **méthode du coude** aide à choisir le nombre de clusters.
+
+## En résumé
+
+- Le clustering **regroupe des données similaires** sans étiquettes.
+- C'est de l'apprentissage **non supervisé**.
+- Il sert à **segmenter, explorer et détecter des anomalies**.
+- **K-Means** est l'algorithme idéal pour débuter.
+
+Prêt pour la suite ? Découvrez
+[comment fonctionne K-Means, étape par étape](/blog/comment-fonctionne-k-means).

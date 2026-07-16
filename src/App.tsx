@@ -1,33 +1,26 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { ThemeProvider } from "./context/ThemeContext";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import ThemeToggle from "@/components/theme/ThemeToggle";
-import './index.css';
+import type { RouteRecord } from 'vite-react-ssg';
+import RootLayout from './RootLayout';
+import Index from './pages/Index';
+import NotFound from './pages/NotFound';
+import { getAllPosts } from './lib/blog';
 
-const queryClient = new QueryClient();
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <ThemeProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <ThemeToggle />
-
-        <BrowserRouter basename={import.meta.env.BASE_URL}>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </ThemeProvider>
-  </QueryClientProvider>
-);
-
-export default App;
+/**
+ * Route tree consumed by vite-react-ssg. Every path here is pre-rendered to
+ * static HTML at build time; `getStaticPaths` enumerates the article pages.
+ */
+export const routes: RouteRecord[] = [
+  {
+    path: '/',
+    element: <RootLayout />,
+    children: [
+      { index: true, Component: Index },
+      { path: 'blog', lazy: () => import('./pages/BlogIndex') },
+      {
+        path: 'blog/:slug',
+        lazy: () => import('./pages/BlogPost'),
+        getStaticPaths: () => getAllPosts().map((p) => `blog/${p.slug}`),
+      },
+      { path: '*', Component: NotFound },
+    ],
+  },
+];

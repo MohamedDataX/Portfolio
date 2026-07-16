@@ -1,0 +1,86 @@
+---
+title: "Différence entre classification et clustering"
+description: "Classification vs clustering : supervisé ou non supervisé, avec ou sans étiquettes, exemples, algorithmes et tableau comparatif pour ne plus jamais les confondre."
+date: "2026-06-28"
+category: "Machine Learning"
+tags: ["Clustering", "Classification", "Machine Learning", "Data Science"]
+author: "Mohamed Ait Sidi Hou"
+---
+
+On confond souvent **classification** et **clustering** car les deux « rangent »
+des données dans des groupes. Pourtant, ils reposent sur des principes opposés.
+Voici comment les distinguer une bonne fois pour toutes.
+
+## La différence en une phrase
+
+- La **classification** apprend à partir d'exemples **déjà étiquetés** — c'est
+  du **supervisé**.
+- Le **clustering** découvre des groupes **sans aucune étiquette** — c'est du
+  **non supervisé**.
+
+<Callout type="tip">
+  Retenez le mot **étiquette**. Vous avez des étiquettes → classification. Vous
+  n'en avez pas → clustering.
+</Callout>
+
+## La classification (supervisé)
+
+En classification, on dispose de données avec la **bonne réponse**. Le modèle
+apprend la relation entre les caractéristiques et l'étiquette, puis prédit
+l'étiquette de **nouvelles** données.
+
+Exemples : détecter un e-mail *spam / non spam*, reconnaître un chiffre
+manuscrit, prédire si un client va *partir ou rester*.
+
+```python
+from sklearn.ensemble import RandomForestClassifier
+
+# X_train : caractéristiques · y_train : étiquettes connues
+model = RandomForestClassifier().fit(X_train, y_train)
+model.predict(X_test)   # prédit une étiquette connue
+```
+
+## Le clustering (non supervisé)
+
+En clustering, il n'y a **pas d'étiquette**. L'algorithme regroupe les données
+par ressemblance et **crée lui-même** les groupes. Voir
+[c'est quoi le clustering](/blog/c-est-quoi-le-clustering) pour l'intuition
+complète.
+
+```python
+from sklearn.cluster import KMeans
+
+# Pas de y : uniquement des caractéristiques
+labels = KMeans(n_clusters=3, n_init="auto").fit_predict(X)
+```
+
+## Tableau comparatif
+
+| Critère              | Classification              | Clustering                 |
+| -------------------- | --------------------------- | -------------------------- |
+| Type d'apprentissage | Supervisé                   | Non supervisé              |
+| Données              | Étiquetées                  | Non étiquetées             |
+| Objectif             | Prédire une classe connue   | Découvrir des groupes      |
+| Sortie               | Étiquette prédite           | Numéro de cluster          |
+| Exemples d'algo      | Random Forest, SVM, KNN     | K-Means, DBSCAN, GMM       |
+| Évaluation           | Accuracy, F1-score          | Silhouette, inertie        |
+
+## Comment choisir ?
+
+Posez-vous **une seule question** : *ai-je des exemples déjà étiquetés ?*
+
+- **Oui** → classification. Vous voulez reproduire une décision connue.
+- **Non** → clustering. Vous voulez explorer et faire émerger une structure.
+
+Il arrive même de **combiner** les deux : faire du clustering pour créer des
+segments, puis entraîner un classifieur pour affecter automatiquement les futurs
+individus à ces segments.
+
+## En résumé
+
+Classification et clustering ne s'opposent pas par leur but — organiser des
+données — mais par leur **matière première** : la présence, ou non,
+d'**étiquettes**. Tout le reste en découle.
+
+Pour approfondir le clustering, lisez
+[comment fonctionne K-Means](/blog/comment-fonctionne-k-means).

@@ -1,0 +1,108 @@
+---
+title: "Comment fonctionne K-Means ? Explication pas à pas"
+description: "K-Means expliqué simplement : l'algorithme, ses 4 étapes, le choix du nombre de clusters (méthode du coude), le code Python, ses forces et ses limites."
+date: "2026-06-03"
+category: "Machine Learning"
+tags: ["Clustering", "K-Means", "Machine Learning", "Python", "Scikit-learn"]
+author: "Mohamed Ait Sidi Hou"
+---
+
+**K-Means** est l'algorithme de clustering le plus utilisé au monde. Il est
+rapide, simple à comprendre et étonnamment efficace. Voyons **comment il
+fonctionne réellement**, étape par étape.
+
+> Nouveau sur le sujet ? Commencez par
+> [c'est quoi le clustering](/blog/c-est-quoi-le-clustering) pour poser les bases.
+
+## L'idée centrale
+
+K-Means cherche à diviser les données en **K groupes**, où chaque groupe est
+représenté par son **centre** (le *centroïde*). L'objectif : que chaque point
+soit le plus proche possible du centre de son cluster.
+
+## Les 4 étapes de l'algorithme
+
+### 1. Initialisation
+
+On place **K centres** au hasard dans l'espace des données.
+
+### 2. Affectation
+
+Chaque point est **rattaché au centre le plus proche** (distance euclidienne).
+On obtient K groupes provisoires.
+
+### 3. Mise à jour
+
+Chaque centre est **recalculé** comme la moyenne des points de son groupe. Le
+centre se déplace donc vers le « cœur » de son cluster.
+
+### 4. Répétition
+
+On répète l'**affectation** et la **mise à jour** jusqu'à ce que les centres ne
+bougent (presque) plus : l'algorithme a **convergé**.
+
+<Callout type="info">
+  K-Means converge toujours, mais pas forcément vers la *meilleure* solution.
+  C'est pourquoi on le relance plusieurs fois avec des initialisations
+  différentes (`n_init`).
+</Callout>
+
+## K-Means en Python
+
+```python {4,7}
+from sklearn.cluster import KMeans
+
+model = KMeans(
+    n_clusters=3,        # le fameux "K"
+    init="k-means++",    # initialisation intelligente des centres
+    n_init="auto",       # plusieurs essais, on garde le meilleur
+    random_state=42,
+)
+labels = model.fit_predict(X)
+centres = model.cluster_centers_
+```
+
+L'option `k-means++` place les centres initiaux de façon astucieuse et améliore
+nettement les résultats par rapport à un tirage purement aléatoire.
+
+## Comment choisir K ?
+
+Le nombre de clusters **K est un choix que vous imposez** à l'algorithme. Deux
+méthodes classiques pour le déterminer :
+
+| Méthode           | Principe                                              |
+| ----------------- | ---------------------------------------------------- |
+| Méthode du coude  | On trace l'inertie selon K et on repère le « coude » |
+| Score silhouette  | On choisit le K qui maximise la silhouette moyenne   |
+
+```python
+inerties = []
+for k in range(1, 10):
+    km = KMeans(n_clusters=k, n_init="auto", random_state=42).fit(X)
+    inerties.append(km.inertia_)   # somme des distances au carré
+```
+
+En traçant `inerties`, le point où la courbe « casse » indique un bon K.
+
+## Forces et limites
+
+**Points forts :**
+
+- Très **rapide**, même sur de gros volumes.
+- **Simple** à comprendre et à implémenter.
+
+**Limites :**
+
+- Il faut **choisir K à l'avance**.
+- Suppose des clusters **sphériques et de taille comparable**.
+- **Sensible** aux valeurs aberrantes et à l'échelle des variables — pensez à
+  **normaliser** vos données.
+
+## En résumé
+
+K-Means alterne **affectation** et **mise à jour** jusqu'à stabilisation des
+centres. Simple, rapide, mais à réserver aux clusters bien séparés et de forme
+régulière.
+
+Pour aller plus loin, comparez clustering et classification :
+[quelle est la différence ?](/blog/difference-classification-clustering)

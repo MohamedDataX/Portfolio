@@ -1,9 +1,14 @@
 import { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { navItems, profile } from '@/data/portfolio';
 
 const Navigation = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHome = location.pathname === '/';
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [scrolled, setScrolled] = useState(false);
@@ -11,6 +16,7 @@ const Navigation = () => {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 8);
+      if (!isHome) return;
 
       const y = window.scrollY + 120;
       let current = 'home';
@@ -24,15 +30,25 @@ const Navigation = () => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isHome]);
 
-  const scrollToSection = (id: string) => {
+  const scrollToId = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
       const top = id === 'home' ? 0 : el.offsetTop - 72;
       window.scrollTo({ top, behavior: 'smooth' });
     }
+  };
+
+  // On the home page: smooth-scroll. Elsewhere: route home, then scroll.
+  const goToSection = (id: string) => {
     setIsMenuOpen(false);
+    if (isHome) {
+      scrollToId(id);
+    } else {
+      navigate('/');
+      window.setTimeout(() => scrollToId(id), 80);
+    }
   };
 
   return (
@@ -45,22 +61,22 @@ const Navigation = () => {
       )}
     >
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6 lg:px-8">
-        <button
-          onClick={() => scrollToSection('home')}
+        <Link
+          to="/"
           className="font-mono text-sm font-medium tracking-tight text-foreground transition-colors hover:text-primary"
         >
           {profile.name.split(' ')[0]}
           <span className="text-primary">.</span>
-        </button>
+        </Link>
 
         <div className="hidden items-center gap-8 md:flex">
           {navItems.map((item) => (
             <button
               key={item.id}
-              onClick={() => scrollToSection(item.id)}
+              onClick={() => goToSection(item.id)}
               className={cn(
                 'text-sm transition-colors hover:text-foreground',
-                activeSection === item.id
+                isHome && activeSection === item.id
                   ? 'text-foreground'
                   : 'text-muted-foreground'
               )}
@@ -68,6 +84,15 @@ const Navigation = () => {
               {item.label}
             </button>
           ))}
+          <Link
+            to="/blog"
+            className={cn(
+              'text-sm transition-colors hover:text-foreground',
+              location.pathname.startsWith('/blog') ? 'text-foreground' : 'text-muted-foreground'
+            )}
+          >
+            Blog
+          </Link>
         </div>
 
         <button
@@ -86,10 +111,10 @@ const Navigation = () => {
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => goToSection(item.id)}
                 className={cn(
                   'block w-full rounded-md px-3 py-2 text-left text-sm transition-colors hover:bg-muted',
-                  activeSection === item.id
+                  isHome && activeSection === item.id
                     ? 'bg-accent text-accent-foreground'
                     : 'text-muted-foreground'
                 )}
@@ -97,6 +122,18 @@ const Navigation = () => {
                 {item.label}
               </button>
             ))}
+            <Link
+              to="/blog"
+              onClick={() => setIsMenuOpen(false)}
+              className={cn(
+                'block w-full rounded-md px-3 py-2 text-left text-sm transition-colors hover:bg-muted',
+                location.pathname.startsWith('/blog')
+                  ? 'bg-accent text-accent-foreground'
+                  : 'text-muted-foreground'
+              )}
+            >
+              Blog
+            </Link>
           </div>
         </div>
       )}

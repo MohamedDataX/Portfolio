@@ -6,10 +6,13 @@ import ProjectsSection from '@/components/ProjectsSection';
 import ExperienceSection from '@/components/ExperienceSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
+import Seo from '@/components/Seo';
+import { SITE } from '@/lib/site';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <Seo title={SITE.title} description={SITE.description} path="" bareTitle />
       <a
         href="#home"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:text-primary-foreground"
