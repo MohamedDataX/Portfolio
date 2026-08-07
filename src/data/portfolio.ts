@@ -15,13 +15,13 @@ import { asset } from '@/lib/asset';
 
 export const profile = {
   name: 'Mohamed Ait Sidi Hou',
-  roles: ['Data Scientist', 'Data Engineer'],
+  roles: ['Data & AI Engineer'],
   heroTitle: 'Data & AI Engineer',
   location: 'Paris, France',
   tagline:
     'I build scalable data pipelines and AI systems that turn complex data into real business value · from data engineering to machine learning in production.',
   intro: [
-    'Data Scientist, Data Engineer and AI Engineer based in Paris. I design and ship scalable data platforms and machine-learning systems that run in production, pairing solid engineering with a clear focus on business value.',
+    'Data & AI Engineer based in Paris. I design and ship scalable data platforms and machine-learning systems that run in production, pairing solid engineering with a clear focus on business value.',
     'Beyond the code, I’m genuinely passionate about technology and AI, fascinated by aerospace and aviation, and never far from sport. I love discovering new cultures and stay endlessly curious · always learning something new.',
   ],
   cvUrl: asset('cv.pdf'), // TODO: drop your CV PDF in /public as cv.pdf
