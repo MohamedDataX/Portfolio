@@ -24,7 +24,7 @@ export const profile = {
     'Data & AI Engineer based in Paris. I design and ship scalable data platforms and machine-learning systems that run in production, pairing solid engineering with a clear focus on business value.',
     'Beyond the code, I’m genuinely passionate about technology and AI, fascinated by aerospace and aviation, and never far from sport. I love discovering new cultures and stay endlessly curious · always learning something new.',
   ],
-  cvUrl: asset('cv.pdf'), // TODO: drop your CV PDF in /public as cv.pdf
+  cvUrl: asset('cv.pdf'), // TODO: CV PDF in /public as cv.pdf
   email: 'aitsidihoumohamed@protonmail.com',
 };
 
@@ -34,9 +34,7 @@ export const socials = {
   github: 'https://github.com/MohamedDataX',
 };
 
-// Web3Forms access key · injected at build from the VITE_WEB3FORMS_KEY
-// GitHub Actions secret (public by design, tied to the destination inbox).
-// For local dev, set it in .env.local. Empty -> the form falls back to mailto.
+
 export const WEB3FORMS_KEY: string = import.meta.env.VITE_WEB3FORMS_KEY ?? '';
 
 export const navItems = [
@@ -184,12 +182,14 @@ export const experiences: Experience[] = [
     role: 'Data Scientist',
     period: 'Sep 2025 · Present',
     location: 'Paris, France',
-    description: 'Building advanced AI solutions within the Data/AI hub.',
+    description: 'Building scalable data pipelines and AI models to solve business problems for La Poste and its subsidiaries.',
     achievements: [
-      'Deployed a modern NLP model for text classification',
-      'Reduced operational time by ~85% through AI automation',
+      'Engineered an Open-Set NLP product classification model achieving 95% accuracy with automated CI/CD retraining and a Streamlit app.',
+      'Optimized Databricks Spark pipelines on 14B+ rows (Liquid Clustering, incremental MERGE), cutting runtime by 57% and FinOps costs by 44%',
+      'Built GeoBricks, a full-stack spatial dataviz web app (FastAPI, Kepler.gl, Azure Web App) integrated with Databricks Unity Catalog via M2M auth, Python SDK',
+      'Contributed feature engineering and experimentation to a high-stakes ML regression project valued at several million euros.',
     ],
-    technologies: ['Python', 'Hugging Face', 'NLP', 'CML', 'Dataiku DSS'],
+    technologies: ['Azure Databricks', 'PySpark', 'Apache Spark', 'Python', 'Scikit-learn', 'NLP', 'FastAPI', 'Streamlit', 'Unity Catalog', 'GitLab CI/CD', 'Azure'],
     logo: asset('laposte.png'),
     website: 'https://www.lapostegroupe.com/',
   },
@@ -204,7 +204,7 @@ export const experiences: Experience[] = [
       'Optimized ETL/ELT pipelines by up to 40%',
       'SQL query tuning, indexing and performance work',
     ],
-    technologies: ['Fabric', 'PySpark', 'SSIS', 'Power BI', 'Azure', 'SQL'],
+    technologies: ['Microsoft Fabric', 'PySpark', 'SQL / T-SQL', 'SSIS / SSMS', 'Talend', 'Power BI', 'Tableau', 'Azure-DevOps', 'Git'],
     logo: asset('Actinvision.png'),
     website: 'https://www.actinvision.com',
   },
@@ -242,8 +242,8 @@ export const education: Education[] = [
     degree: 'Master · AI & Big Data',
     period: '2025 · 2027',
     location: 'Paris, France',
-    description: 'Deep learning, advanced ML and distributed systems.',
-    achievements: ['With honours', 'Thesis on financial prediction'],
+    description: 'Cloud data engineering, Spark, deep learning, advanced ML and distributed systems.',
+    achievements: ['Master\'s thesis in progress'],
     logo: asset('logoESGI.png'),
     website: 'https://www.esgi.fr',
   },
@@ -252,7 +252,7 @@ export const education: Education[] = [
     degree: 'Bachelor · AI & Big Data',
     period: '2024 · 2025',
     location: 'Paris, France',
-    description: 'Statistics, data engineering and applied AI.',
+    description: 'Statistics, data engineering and applied AI',
     achievements: ['With honours', 'Top of class in Mathematics'],
     logo: asset('logoESGI.png'),
     website: 'https://www.esgi.fr',
@@ -262,7 +262,7 @@ export const education: Education[] = [
     degree: 'BSc · Mathematics & Computer Science',
     period: '2021 · 2023',
     location: 'Montpellier, France',
-    description: 'Applied mathematics, programming and statistics.',
+    description: 'Applied mathematics, programming and statistics',
     achievements: ['Advanced statistics', 'Python & C programming'],
     logo: asset('umlogoo.png'),
     website: 'https://sciences.edu.umontpellier.fr/',

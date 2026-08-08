@@ -37,7 +37,7 @@ const Footer = () => (
     </div>
 
     <p className="pb-8 text-center text-xs text-muted-foreground">
-      © {new Date().getFullYear()} {profile.name}. All rights reserved.
+      © {new Date().getFullYear()} {profile.name}
     </p>
   </footer>
 );
