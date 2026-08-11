@@ -1,6 +1,5 @@
 /**
- * Single source of truth for all portfolio content.
- * Edit here · every section reads from this file.
+ * Single source of truth for all portfolio content
  */
 import {
   Code2,
@@ -19,10 +18,10 @@ export const profile = {
   heroTitle: 'Data & AI Engineer',
   location: 'Paris, France',
   tagline:
-    'I build scalable data pipelines and AI systems that turn complex data into real business value · from data engineering to machine learning in production.',
+    'Combining Data Engineering & Data Science to build robust pipelines and deploy intelligent systems that drive measurable business impact.',
   intro: [
-    'Data & AI Engineer based in Paris. I design and ship scalable data platforms and machine-learning systems that run in production, pairing solid engineering with a clear focus on business value.',
-    'Beyond the code, I’m genuinely passionate about technology and AI, fascinated by aerospace and aviation, and never far from sport. I love discovering new cultures and stay endlessly curious · always learning something new.',
+    'Data & AI Engineer based in Paris. I design, build, and deploy end-to-end data foundations and production-ready AI systems, combining strong engineering with a clear focus on business value.',
+    'Beyond the code, I’m fueled by aerospace and aviation, inspired by music and travel, and never far from sport. I love exploring new cultures and staying endlessly curious · always learning something new.',
   ],
   cvUrl: asset('cv.pdf'), // TODO: CV PDF in /public as cv.pdf
   email: 'aitsidihoumohamed@protonmail.com',
@@ -56,12 +55,12 @@ export const skillCategories: SkillCategory[] = [
   {
     icon: Database,
     title: 'Data Engineering',
-    skills: ['Apache Spark', 'PySpark', 'Databricks', 'SQL', 'Airflow', 'SSIS'],
+    skills: ['Apache Spark', 'PySpark', 'Databricks', 'SQL', 'Airflow', 'SSIS-SSMS'],
   },
   {
     icon: Brain,
     title: 'Machine Learning & AI',
-    skills: ['Python', 'Scikit-learn', 'PyTorch', 'TensorFlow', 'Hugging Face', 'XGBoost'],
+    skills: ['Python', 'Scikit-learn', 'Vector DBs', 'TensorFlow', 'RAG', 'XGBoost', 'NLP', 'LLM', 'Clustering'],
   },
   {
     icon: GitBranch,
@@ -88,14 +87,14 @@ export const skillCategories: SkillCategory[] = [
   {
     icon: Code2,
     title: 'Languages & Tools',
-    skills: ['Python', 'SQL', 'T-SQL', 'JAVA', 'Git', 'Docker', 'Bash'],
+    skills: ['Python', 'SQL', 'T-SQL', 'JAVA', 'Git', 'Docker', 'Bash', 'Linux', 'R'],
   },
 ];
 
 export const specializations = [
   'Natural Language Processing',
-  'Time Series Forecasting',
-  'Recommender Systems',
+  'Generative AI & LLMs',
+  'RAG & Vector Search',
   'Computer Vision',
   'Statistical Modeling',
   'ETL / ELT',
