@@ -117,16 +117,17 @@ export interface Project {
 // Projects derived from real work. Replace githubUrl/demoUrl with live links.
 export const projects: Project[] = [
   {
-    title: 'NLP Text Classification Engine',
-    category: 'Natural Language Processing',
+    title: 'SparkGuardian: AI PySpark Linter & Optimizer',
+    category: 'Data Engineering & GenAI',
     description:
-      'Modern transformer-based pipeline for automatic classification of operational text at scale, built within a data/AI hub.',
+      'An intelligent, privacy-first PySpark linter and optimizer combining static AST analysis, execution plan validation, and local LLMs to eliminate anti-patterns, prevent OOMs, and reduce cloud costs.',
     highlights: [
-      'Cut operational processing time by ~85% through AI automation',
-      'Fine-tuned Hugging Face transformers with CI/CD (CML) integration',
+      'Detects performance bottlenecks without executing code and calculates estimated monthly cloud cost savings',
+      'Leverages a fully local LLM layer grounded in Spark docs to auto-refactor code with zero data leaving the machine',
+      'Seamlessly integrates into CI/CD pipelines to block costly anti-patterns before reaching production',
     ],
-    technologies: ['Python', 'Hugging Face', 'NLP', 'CML', 'Dataiku DSS'],
-    githubUrl: socials.github,
+    technologies: ['PySpark', 'Python', 'Local LLMs', 'AST Analysis', 'CI/CD', 'GenAI'],
+    githubUrl: 'https://github.com/MohamedDataX/sparkguardian',
   },
   {
     title: 'Internal Recommendation System',
