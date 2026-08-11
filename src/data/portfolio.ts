@@ -88,7 +88,7 @@ export const skillCategories: SkillCategory[] = [
   {
     icon: Code2,
     title: 'Languages & Tools',
-    skills: ['Python', 'SQL', 'Git', 'Docker', 'Bash'],
+    skills: ['Python', 'SQL', 'T-SQL', 'JAVA', 'Git', 'Docker', 'Bash'],
   },
 ];
 
