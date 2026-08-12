@@ -18,11 +18,10 @@ export const profile = {
   roles: ['Data & AI Engineer'],
   heroTitle: 'Data & AI Engineer',
   location: 'Paris, France',
-  tagline:
-    'I build scalable data pipelines and AI systems that turn complex data into real business value · from data engineering to machine learning in production.',
+  tagline: 'I build data pipelines and production-ready AI systems.',
   intro: [
-    'Data & AI Engineer based in Paris. I design and ship scalable data platforms and machine-learning systems that run in production, pairing solid engineering with a clear focus on business value.',
-    'Beyond the code, I’m genuinely passionate about technology and AI, fascinated by aerospace and aviation, and never far from sport. I love discovering new cultures and stay endlessly curious · always learning something new.',
+    'Data & AI Engineer based in Paris, focused on building data pipelines, machine learning systems and AI applications that run in production.',
+    'Outside of work: aerospace, aviation, sports, music, gaming, and travel.',
   ],
   cvUrl: asset('cv.pdf'), // TODO: drop your CV PDF in /public as cv.pdf
   email: 'aitsidihoumohamed@protonmail.com',
@@ -34,9 +33,6 @@ export const socials = {
   github: 'https://github.com/MohamedDataX',
 };
 
-// Web3Forms access key · injected at build from the VITE_WEB3FORMS_KEY
-// GitHub Actions secret (public by design, tied to the destination inbox).
-// For local dev, set it in .env.local. Empty -> the form falls back to mailto.
 export const WEB3FORMS_KEY: string = import.meta.env.VITE_WEB3FORMS_KEY ?? '';
 
 export const navItems = [
@@ -63,7 +59,7 @@ export const skillCategories: SkillCategory[] = [
   {
     icon: Brain,
     title: 'Machine Learning & AI',
-    skills: ['Python', 'Scikit-learn', 'PyTorch', 'TensorFlow', 'Hugging Face', 'XGBoost'],
+    skills: ['Scikit-learn', 'PyTorch', 'TensorFlow', 'Hugging Face', 'XGBoost'],
   },
   {
     icon: GitBranch,
@@ -90,17 +86,14 @@ export const skillCategories: SkillCategory[] = [
   {
     icon: Code2,
     title: 'Languages & Tools',
-    skills: ['Python', 'SQL', 'Git', 'Docker', 'Bash'],
+    skills: ['Python', 'SQL', 'Gitlab', 'Docker', 'Bash'],
   },
 ];
 
 export const specializations = [
   'Natural Language Processing',
   'Time Series Forecasting',
-  'Recommender Systems',
-  'Computer Vision',
-  'Statistical Modeling',
-  'ETL / ELT',
+  'Data Engineering',
   'MLOps & Deployment',
 ];
 
