@@ -203,7 +203,7 @@ export const experiences: Experience[] = [
       'Monitored and administered a Microsoft Fabric platform, including pipelines, jobs, access and capacity usage',
     ],
     technologies: ['Microsoft Fabric', 'Power BI', 'SSIS', 'SQL Server', 'SSMS', 'Azure DevOps', 'Azure', 'ETL', 'Data Warehouse'],
-    logo: asset('actinvision.png'),
+    logo: asset('Actinvision.png'),
     website: 'https://www.actinvision.com/',
   },
   {
