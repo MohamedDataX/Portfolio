@@ -92,10 +92,12 @@ export const skillCategories: SkillCategory[] = [
 
 export const specializations = [
   'Natural Language Processing',
-  'Time Series Forecasting',
+  'Generative AI & LLMs',
+  'RAG & Vector Search',
   'Data Engineering',
   'MLOps & Deployment',
 ];
+
 
 export interface Project {
   title: string;
@@ -107,7 +109,7 @@ export interface Project {
   demoUrl?: string;
 }
 
-// Projects derived from real work. Replace githubUrl/demoUrl with live links.
+
 export const projects: Project[] = [
   {
     title: 'SparkGuardian: AI PySpark Linter & Optimizer',
@@ -119,20 +121,21 @@ export const projects: Project[] = [
       'Leverages a fully local LLM layer grounded in Spark docs to auto-refactor code with zero data leaving the machine',
       'Seamlessly integrates into CI/CD pipelines to block costly anti-patterns before reaching production',
     ],
-    technologies: ['PySpark', 'Python', 'Local LLMs', 'AST Analysis', 'CI/CD', 'GenAI'],
+    technologies: ['PySpark', 'Python', 'LLMs', 'AST Analysis', 'CI/CD', 'RAG', 'GenAI'],
     githubUrl: 'https://github.com/MohamedDataX/sparkguardian',
   },
   {
-    title: 'Internal Recommendation System',
-    category: 'Machine Learning',
+    title: 'Real-Time License Plate Detection with Spark Structured Streaming',
+    category: 'Data Engineering & AI',
     description:
-      'The company’s first internal recommendation engine, covering the full data lifecycle from ingestion to serving.',
+      'Real-time computer vision pipeline built with Apache Spark Structured Streaming, processing license-plate images through distributed streaming inference, OCR, and analytics.',
     highlights: [
-      'Designed and shipped the first production recommender',
-      'End-to-end pipeline: ingestion, feature engineering, serving',
+      'Built a production-style Spark Structured Streaming pipeline with micro-batch processing, checkpointing, and fault-tolerant data ingestion',
+      'Integrated YOLOv8n + ONNX Runtime for real-time plate detection and Tesseract OCR directly into the Spark streaming pipeline',
+      'Streams, processes, and persists detection results as partitioned Parquet data, with a live Streamlit monitoring dashboard',
     ],
-    technologies: ['Python', 'Scikit-learn', 'SSIS', 'SQL', 'Azure'],
-    githubUrl: socials.github,
+    technologies: ['Apache Spark', 'Structured Streaming', 'Scala', 'Python', 'YOLOv8', 'ONNX', 'Tesseract OCR', 'Parquet'],
+    githubUrl: 'https://github.com/LisaMoula/plate-detection-structured-streaming',
   },
   {
     title: 'ML Models in Production (Consulting)',
