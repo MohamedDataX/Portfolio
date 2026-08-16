@@ -205,7 +205,7 @@ export const experiences: Experience[] = [
     technologies: ['Microsoft Fabric', 'Power BI', 'SSIS', 'SQL Server', 'SSMS', 'Azure DevOps', 'Azure', 'ETL', 'Data Warehouse'],
     logo: asset('actinvision.png'),
     website: 'https://www.actinvision.com/',
-  ,
+  },
   {
     company: 'Azura Group',
     role: 'Data Developer',
