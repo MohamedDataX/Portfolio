@@ -1,6 +1,5 @@
 /**
- * Single source of truth for all portfolio content.
- * Edit here · every section reads from this file.
+ * Single source of truth for all portfolio content
  */
 import {
   Code2,
@@ -23,7 +22,7 @@ export const profile = {
     'Data & AI Engineer based in Paris, focused on building data pipelines, machine learning systems and AI applications that run in production.',
     'Outside of work: aerospace, aviation, sports, music, gaming, and travel.',
   ],
-  cvUrl: asset('cv.pdf'), // TODO: drop your CV PDF in /public as cv.pdf
+  cvUrl: asset('cv.pdf'), // CV pdf
   email: 'aitsidihoumohamed@protonmail.com',
 };
 
