@@ -261,7 +261,7 @@ export const education: Education[] = [
     period: '2021 · 2023',
     location: 'Montpellier, France',
     description: 'Applied mathematics, programming and statistics.',
-    achievements: ['Advanced statistics', 'Python & C programming'],
+    achievements: ['Advanced Statistics', 'Python, C & Java Programming'],
     logo: asset('umlogoo.png'),
     website: 'https://sciences.edu.umontpellier.fr/',
   },
