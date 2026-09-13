@@ -1,5 +1,6 @@
 import { ArrowUpRight, Download } from 'lucide-react';
 import { profile } from '@/data/portfolio';
+import { useLanguage } from '@/i18n/LanguageContext';
 import { cn } from '@/lib/utils';
 
 const scrollTo = (id: string) => {
@@ -8,6 +9,8 @@ const scrollTo = (id: string) => {
 };
 
 const HeroSection = () => {
+  const { t, pick } = useLanguage();
+
   return (
     <section
       id="home"
@@ -36,7 +39,7 @@ const HeroSection = () => {
             className="animate-fade-in mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-xl font-light text-muted-foreground sm:text-2xl"
             style={{ animationDelay: '160ms' }}
           >
-            {profile.heroTitle.split('&').map((part, i) => (
+            {pick(profile.heroTitle).split('&').map((part, i) => (
               <span key={part} className="inline-flex items-center gap-3">
                 {i > 0 && <span className="text-primary">&</span>}
                 <span>{part.trim()}</span>
@@ -55,7 +58,7 @@ const HeroSection = () => {
             className="animate-fade-in mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground"
             style={{ animationDelay: '240ms' }}
           >
-            {profile.tagline}
+            {pick(profile.tagline)}
           </p>
 
           <div
@@ -69,7 +72,7 @@ const HeroSection = () => {
                 'transition-transform duration-200 hover:-translate-y-0.5'
               )}
             >
-              View my projects
+              {t.hero.viewProjects}
               <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </button>
 
@@ -77,7 +80,7 @@ const HeroSection = () => {
               onClick={() => scrollTo('contact')}
               className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted"
             >
-              Get in touch
+              {t.hero.getInTouch}
             </button>
 
             <button
@@ -85,7 +88,7 @@ const HeroSection = () => {
               className="inline-flex items-center gap-2 px-2 py-3 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               <Download className="h-4 w-4" />
-              Résumé
+              {t.hero.resume}
             </button>
           </div>
         </div>

@@ -6,6 +6,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Section, SectionHeading } from '@/components/shared/Section';
 import Reveal from '@/components/shared/Reveal';
 import { socials, WEB3FORMS_KEY } from '@/data/portfolio';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 const contactLinks = [
   { icon: Mail, label: 'Email', value: socials.email, href: `mailto:${socials.email}` },
@@ -14,6 +15,7 @@ const contactLinks = [
 ];
 
 const ContactSection = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [botcheck, setBotcheck] = useState(''); // honeypot — must stay empty
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -37,8 +39,8 @@ const ContactSection = () => {
     );
     window.location.href = `mailto:${socials.email}?subject=${subject}&body=${body}`;
     toast({
-      title: 'Opening your mail app',
-      description: `If nothing opens, email me at ${socials.email}.`,
+      title: t.contact.mailtoTitle,
+      description: t.contact.mailtoDescription(socials.email),
     });
     setFormData({ name: '', email: '', message: '' });
   };
@@ -70,9 +72,8 @@ const ContactSection = () => {
       const data = await res.json();
       if (data.success) {
         toast({
-          title: 'Message sent',
-          description:
-            'Thank you for your message! I’ll get back to you as soon as possible, usually within 24 hours.',
+          title: t.contact.sentTitle,
+          description: t.contact.sentDescription,
         });
         setFormData({ name: '', email: '', message: '' });
       } else {
@@ -80,8 +81,8 @@ const ContactSection = () => {
       }
     } catch {
       toast({
-        title: 'Could not send',
-        description: `Please email me directly at ${socials.email}.`,
+        title: t.contact.errorTitle,
+        description: t.contact.errorDescription(socials.email),
         variant: 'destructive',
       });
     } finally {
@@ -92,9 +93,9 @@ const ContactSection = () => {
   return (
     <Section id="contact" className="bg-muted/30">
       <SectionHeading
-        eyebrow="Get in touch"
-        title="Let’s talk"
-        description="Have a project, a role, or a question about data & AI? Drop me a message."
+        eyebrow={t.contact.eyebrow}
+        title={t.contact.title}
+        description={t.contact.description}
         align="center"
       />
 
@@ -119,9 +120,9 @@ const ContactSection = () => {
           ))}
 
           <div className="rounded-xl border border-border bg-card p-4">
-            <p className="text-sm font-medium text-foreground">Availability</p>
+            <p className="text-sm font-medium text-foreground">{t.contact.availabilityTitle}</p>
             <p className="mt-1 text-sm text-muted-foreground">
-              Open to new opportunities and collaborations. Typical response time: Under 24 hours.
+              {t.contact.availabilityText}
             </p>
           </div>
         </Reveal>
@@ -144,7 +145,7 @@ const ContactSection = () => {
             />
             <div>
               <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-foreground">
-                Name
+                {t.contact.name}
               </label>
               <Input
                 id="name"
@@ -152,12 +153,12 @@ const ContactSection = () => {
                 required
                 value={formData.name}
                 onChange={handleChange}
-                placeholder="Your name"
+                placeholder={t.contact.namePlaceholder}
               />
             </div>
             <div>
               <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-foreground">
-                Email
+                {t.contact.email}
               </label>
               <Input
                 id="email"
@@ -166,12 +167,12 @@ const ContactSection = () => {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="you@example.com"
+                placeholder={t.contact.emailPlaceholder}
               />
             </div>
             <div>
               <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-foreground">
-                Message
+                {t.contact.message}
               </label>
               <Textarea
                 id="message"
@@ -180,7 +181,7 @@ const ContactSection = () => {
                 rows={5}
                 value={formData.message}
                 onChange={handleChange}
-                placeholder="Tell me about your project or question…"
+                placeholder={t.contact.messagePlaceholder}
                 className="resize-none"
               />
             </div>
@@ -191,11 +192,11 @@ const ContactSection = () => {
             >
               {isSubmitting ? (
                 <>
-                  <Loader2 className="h-4 w-4 animate-spin" /> Sending…
+                  <Loader2 className="h-4 w-4 animate-spin" /> {t.contact.sending}
                 </>
               ) : (
                 <>
-                  <Send className="h-4 w-4" /> Send message
+                  <Send className="h-4 w-4" /> {t.contact.send}
                 </>
               )}
             </button>

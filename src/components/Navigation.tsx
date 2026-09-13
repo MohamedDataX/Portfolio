@@ -3,8 +3,12 @@ import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { navItems, profile } from '@/data/portfolio';
 import ThemeToggle from '@/components/theme/ThemeToggle';
+import LanguageSwitch from '@/components/LanguageSwitch';
+import LanguageMenu from '@/components/LanguageMenu';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 const Navigation = () => {
+  const { t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [scrolled, setScrolled] = useState(false);
@@ -15,9 +19,9 @@ const Navigation = () => {
 
       const y = window.scrollY + 120;
       let current = 'home';
-      for (const item of navItems) {
-        const el = document.getElementById(item.id);
-        if (el && el.offsetTop <= y) current = item.id;
+      for (const id of navItems) {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= y) current = id;
       }
       setActiveSection(current);
     };
@@ -55,28 +59,30 @@ const Navigation = () => {
         </button>
 
         <div className="hidden items-center gap-8 md:flex">
-          {navItems.map((item) => (
+          {navItems.map((id) => (
             <button
-              key={item.id}
-              onClick={() => scrollToSection(item.id)}
+              key={id}
+              onClick={() => scrollToSection(id)}
               className={cn(
                 'text-sm transition-colors hover:text-foreground',
-                activeSection === item.id
+                activeSection === id
                   ? 'text-foreground'
                   : 'text-muted-foreground'
               )}
             >
-              {item.label}
+              {t.nav[id]}
             </button>
           ))}
+          <LanguageMenu />
         </div>
 
         <div className="flex items-center gap-3 md:hidden">
+          <LanguageSwitch />
           <ThemeToggle className="static" />
           <button
             className="text-foreground"
             onClick={() => setIsMenuOpen((v) => !v)}
-            aria-label="Toggle menu"
+            aria-label={t.a11y.menu}
             aria-expanded={isMenuOpen}
           >
             {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -87,18 +93,18 @@ const Navigation = () => {
       {isMenuOpen && (
         <div className="border-b border-border bg-background md:hidden">
           <div className="mx-auto max-w-6xl space-y-1 px-6 py-3">
-            {navItems.map((item) => (
+            {navItems.map((id) => (
               <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                key={id}
+                onClick={() => scrollToSection(id)}
                 className={cn(
                   'block w-full rounded-md px-3 py-2 text-left text-sm transition-colors hover:bg-muted',
-                  activeSection === item.id
+                  activeSection === id
                     ? 'bg-accent text-accent-foreground'
                     : 'text-muted-foreground'
                 )}
               >
-                {item.label}
+                {t.nav[id]}
               </button>
             ))}
           </div>

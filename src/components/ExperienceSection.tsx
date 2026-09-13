@@ -2,6 +2,7 @@ import { MapPin, Calendar, ArrowUpRight } from 'lucide-react';
 import { Section, SectionHeading } from '@/components/shared/Section';
 import Reveal from '@/components/shared/Reveal';
 import { experiences, education } from '@/data/portfolio';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 interface TimelineEntry {
   logo: string;
@@ -15,7 +16,7 @@ interface TimelineEntry {
   technologies?: string[];
 }
 
-const TimelineList = ({ entries }: { entries: TimelineEntry[] }) => (
+const TimelineList = ({ entries, logoLabel }: { entries: TimelineEntry[]; logoLabel: string }) => (
   <ol className="relative space-y-8 border-l border-border pl-8">
     {entries.map((e, i) => (
       <Reveal as="li" key={`${e.title}-${e.subtitle}`} delay={i * 60} className="relative">
@@ -25,7 +26,7 @@ const TimelineList = ({ entries }: { entries: TimelineEntry[] }) => (
           <div className="flex items-start gap-4">
             <img
               src={e.logo}
-              alt={`${e.subtitle} logo`}
+              alt={`${e.subtitle} ${logoLabel}`}
               loading="lazy"
               className="h-12 w-12 flex-shrink-0 rounded-lg border border-border bg-background object-contain p-1.5"
             />
@@ -86,49 +87,51 @@ const TimelineList = ({ entries }: { entries: TimelineEntry[] }) => (
 );
 
 const ExperienceSection = () => {
+  const { t, pick } = useLanguage();
+
   const work: TimelineEntry[] = experiences.map((e) => ({
     logo: e.logo,
-    title: e.role,
+    title: pick(e.role),
     subtitle: e.company,
     website: e.website,
-    period: e.period,
+    period: pick(e.period),
     location: e.location,
-    description: e.description,
-    achievements: e.achievements,
+    description: pick(e.description),
+    achievements: pick(e.achievements),
     technologies: e.technologies,
   }));
 
   const study: TimelineEntry[] = education.map((e) => ({
     logo: e.logo,
-    title: e.degree,
+    title: pick(e.degree),
     subtitle: e.school,
     website: e.website,
     period: e.period,
     location: e.location,
-    description: e.description,
-    achievements: e.achievements,
+    description: pick(e.description),
+    achievements: pick(e.achievements),
   }));
 
   return (
     <Section id="experience">
       <SectionHeading
-        eyebrow="Career"
-        title="Experience & education"
-        description="Roles and studies that shaped my data and AI practice."
+        eyebrow={t.experience.eyebrow}
+        title={t.experience.title}
+        description={t.experience.description}
       />
 
       <div className="grid gap-12 lg:grid-cols-2 lg:gap-14">
         <div>
           <h3 className="mb-8 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-            Experience
+            {t.experience.work}
           </h3>
-          <TimelineList entries={work} />
+          <TimelineList entries={work} logoLabel={t.experience.logo} />
         </div>
         <div>
           <h3 className="mb-8 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-            Education
+            {t.experience.education}
           </h3>
-          <TimelineList entries={study} />
+          <TimelineList entries={study} logoLabel={t.experience.logo} />
         </div>
       </div>
     </Section>
