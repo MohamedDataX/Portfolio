@@ -25,13 +25,6 @@ const HeroSection = () => {
 
       <div className="mx-auto w-full max-w-6xl px-6 lg:px-8">
         <div className="max-w-3xl">
-          <div className="animate-fade-in">
-            <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 font-mono text-xs text-muted-foreground">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-              Available for opportunities · {profile.location}
-            </p>
-          </div>
-
           <h1
             className="animate-fade-in text-4xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-7xl"
             style={{ animationDelay: '80ms' }}
@@ -50,6 +43,13 @@ const HeroSection = () => {
               </span>
             ))}
           </div>
+
+          <p
+            className="animate-fade-in mt-3 font-mono text-sm text-muted-foreground"
+            style={{ animationDelay: '200ms' }}
+          >
+            {profile.location}
+          </p>
 
           <p
             className="animate-fade-in mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground"
