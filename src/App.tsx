@@ -17,7 +17,7 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <ThemeToggle />
+        <ThemeToggle className="hidden md:flex" />
 
         <BrowserRouter basename={import.meta.env.BASE_URL}>
           <Routes>
