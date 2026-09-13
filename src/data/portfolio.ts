@@ -1,15 +1,6 @@
 /**
  * Single source of truth for all portfolio content
  */
-import {
-  Code2,
-  Database,
-  Brain,
-  BarChart3,
-  Cloud,
-  GitBranch,
-  type LucideIcon,
-} from 'lucide-react';
 import { asset } from '@/lib/asset';
 
 export const profile = {
@@ -37,36 +28,30 @@ export const WEB3FORMS_KEY: string = import.meta.env.VITE_WEB3FORMS_KEY ?? '';
 export const navItems = [
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
-  { id: 'skills', label: 'Skills' },
   { id: 'projects', label: 'Projects' },
   { id: 'experience', label: 'Experience' },
   { id: 'contact', label: 'Contact' },
 ] as const;
 
 export interface SkillCategory {
-  icon: LucideIcon;
   title: string;
   skills: string[];
 }
 
 export const skillCategories: SkillCategory[] = [
   {
-    icon: Database,
     title: 'Data Engineering',
     skills: ['Apache Spark', 'PySpark', 'Databricks', 'SQL', 'Airflow','dbt', 'SSIS'],
   },
   {
-    icon: Brain,
     title: 'Machine Learning & AI',
     skills: ['Scikit-learn', 'PyTorch', 'TensorFlow', 'Hugging Face', 'XGBoost'],
   },
   {
-    icon: GitBranch,
     title: 'MLOps',
     skills: ['MLflow', 'Docker', 'Git', 'CI/CD', 'Model Deployment'],
   },
   {
-    icon: Cloud,
     title: 'Cloud & Platforms',
     skills: [
       'Microsoft Azure',
@@ -77,25 +62,14 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    icon: BarChart3,
     title: 'Visualization',
     skills: ['Power BI', 'Tableau', 'Streamlit'],
   },
   {
-    icon: Code2,
     title: 'Languages & Tools',
     skills: ['Python', 'SQL', 'Gitlab', 'Docker', 'Bash'],
   },
 ];
-
-export const specializations = [
-  'Natural Language Processing',
-  'Generative AI & LLMs',
-  'RAG & Vector Search',
-  'Data Engineering',
-  'MLOps & Deployment',
-];
-
 
 export interface Project {
   title: string;
