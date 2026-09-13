@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils';
 import { navItems, profile } from '@/data/portfolio';
 import ThemeToggle from '@/components/theme/ThemeToggle';
 import LanguageSwitch from '@/components/LanguageSwitch';
+import LanguageMenu from '@/components/LanguageMenu';
 import { useLanguage } from '@/i18n/LanguageContext';
 
 const Navigation = () => {
@@ -72,7 +73,7 @@ const Navigation = () => {
               {t.nav[id]}
             </button>
           ))}
-          <LanguageSwitch />
+          <LanguageMenu />
         </div>
 
         <div className="flex items-center gap-3 md:hidden">

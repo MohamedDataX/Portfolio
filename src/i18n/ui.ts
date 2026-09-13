@@ -7,6 +7,9 @@ export type Localized<T = string> = Record<Lang, T>;
 
 export const languages: Lang[] = ['en', 'fr'];
 
+/** Each language named in itself, as in the AWS / Apple pickers. */
+export const languageNames: Record<Lang, string> = { en: 'English', fr: 'Français' };
+
 const en = {
   nav: {
     home: 'Home',
