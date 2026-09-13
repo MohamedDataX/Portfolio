@@ -300,7 +300,7 @@ export const education: Education[] = [
       fr: 'Deep learning, ML avancé et systèmes distribués.',
     },
     achievements: { en: ['In progress'], fr: ['En cours'] },
-    logo: asset('logoESGI.png'),
+    logo: asset('logoESGI.jpeg'),
     website: 'https://www.esgi.fr',
   },
   {
@@ -316,7 +316,7 @@ export const education: Education[] = [
       en: ['With honours', 'Top of class in Mathematics'],
       fr: ['Diplômé avec mention', 'Major de promo en mathématiques'],
     },
-    logo: asset('logoESGI.png'),
+    logo: asset('logoESGI.jpeg'),
     website: 'https://www.esgi.fr',
   },
   {
