@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { navItems, profile } from '@/data/portfolio';
+import ThemeToggle from '@/components/theme/ThemeToggle';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -70,14 +71,17 @@ const Navigation = () => {
           ))}
         </div>
 
-        <button
-          className="text-foreground md:hidden"
-          onClick={() => setIsMenuOpen((v) => !v)}
-          aria-label="Toggle menu"
-          aria-expanded={isMenuOpen}
-        >
-          {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        <div className="flex items-center gap-3 md:hidden">
+          <ThemeToggle className="static" />
+          <button
+            className="text-foreground"
+            onClick={() => setIsMenuOpen((v) => !v)}
+            aria-label="Toggle menu"
+            aria-expanded={isMenuOpen}
+          >
+            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </div>
 
       {isMenuOpen && (

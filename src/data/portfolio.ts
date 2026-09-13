@@ -41,7 +41,7 @@ export interface SkillCategory {
 export const skillCategories: SkillCategory[] = [
   {
     title: 'Data Engineering',
-    skills: ['Apache Spark', 'PySpark', 'Databricks', 'SQL', 'Airflow','dbt', 'SSIS'],
+    skills: ['Apache Spark', 'PySpark', 'Databricks', 'Airflow', 'dbt', 'SSIS'],
   },
   {
     title: 'Machine Learning & AI',
@@ -56,7 +56,6 @@ export const skillCategories: SkillCategory[] = [
     skills: [
       'Microsoft Azure',
       'AWS',
-      'Databricks',
       'Microsoft Fabric',
       'Dataiku',
     ],
@@ -67,7 +66,7 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     title: 'Languages & Tools',
-    skills: ['Python', 'SQL', 'Gitlab', 'Docker', 'Bash'],
+    skills: ['Python', 'SQL', 'Gitlab', 'Bash'],
   },
 ];
 
