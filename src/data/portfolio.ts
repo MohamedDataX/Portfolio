@@ -20,7 +20,7 @@ export const profile = {
   tagline: 'I build data pipelines and production-ready AI systems.',
   intro: [
     'Data & AI Engineer based in Paris, focused on building data pipelines, machine learning systems and AI applications that run in production.',
-    'Outside of work: aerospace, aviation, sports, music, gaming, and travel.',
+    'Outside of work: aerospace, sports, music, gaming, and travel.',
   ],
   cvUrl: asset('cv.pdf'), // CV pdf
   email: 'aitsidihoumohamed@protonmail.com',
@@ -53,7 +53,7 @@ export const skillCategories: SkillCategory[] = [
   {
     icon: Database,
     title: 'Data Engineering',
-    skills: ['Apache Spark', 'PySpark', 'Databricks', 'SQL', 'Airflow', 'SSIS'],
+    skills: ['Apache Spark', 'PySpark', 'Databricks', 'SQL', 'Airflow','dbt', 'SSIS'],
   },
   {
     icon: Brain,
@@ -240,7 +240,7 @@ export const education: Education[] = [
     period: '2025 · 2027',
     location: 'Paris, France',
     description: 'Deep learning, advanced ML and distributed systems.',
-    achievements: ['With honours', 'Thesis on financial prediction'],
+    achievements: ['In progress'],
     logo: asset('logoESGI.png'),
     website: 'https://www.esgi.fr',
   },
