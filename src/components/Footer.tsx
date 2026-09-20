@@ -40,8 +40,12 @@ const Footer = () => {
         </div>
       </div>
 
-      <p className="pb-8 text-center text-xs text-muted-foreground">
+      <p className="text-center text-xs text-muted-foreground">
         © {new Date().getFullYear()} {profile.name}. {t.footer.rights}
+      </p>
+
+      <p className="mx-auto max-w-xl px-6 pb-8 pt-2 text-center text-[10px] leading-relaxed text-muted-foreground/60">
+        {t.footer.analytics}
       </p>
     </footer>
   );

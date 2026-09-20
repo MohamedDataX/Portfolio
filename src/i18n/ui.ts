@@ -70,6 +70,8 @@ const en = {
   },
   footer: {
     rights: 'All rights reserved.',
+    analytics:
+      'This site uses Google Analytics to measure anonymous traffic statistics. No personal data is sold or shared.',
   },
   notFound: {
     title: 'Page not found',
@@ -147,6 +149,8 @@ const fr: UiStrings = {
   },
   footer: {
     rights: 'Tous droits réservés.',
+    analytics:
+      'Ce site utilise Google Analytics pour mesurer une fréquentation anonyme. Aucune donnée personnelle n’est vendue ni partagée.',
   },
   notFound: {
     title: 'Page introuvable',
